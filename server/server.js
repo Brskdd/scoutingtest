@@ -5,7 +5,7 @@ let randvar = 100;
 function randtherandvar() {
     randvar = Math.floor((Math.random())*100)
 }
-const runtherandtherandvar = setInterval(randtherandvar,100);
+const runtherandtherandvar = setInterval(randtherandvar,2000);
 
 app.get("/api", (req,res) => {
     res.send(randvar.toString())

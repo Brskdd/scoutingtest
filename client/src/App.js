@@ -12,10 +12,10 @@ function App() {
     ).then(
       data => {
         setbackenddata(data);
-        
+        timespolled += 1;
       }
     )
-    }, 200);
+    }, 1000);
     return () => clearInterval(fetchdata)
   }, [])
 
