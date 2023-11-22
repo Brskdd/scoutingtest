@@ -1,0 +1,6 @@
+#1 priority match system (Call it MatchBox?)
+#2 priority FireScope (scouting other robots and running analysis)
+#3 priority FireWatch (scouting our own robot and analys of its data on the field live and in general)
+
+whiteboard system
+ai suggestion
