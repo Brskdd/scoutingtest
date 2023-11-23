@@ -1,6 +1,6 @@
 [
     {
-        "nodeid": 1,
+        "id": 1,
         "name": "appledisplay",
         "type": "singlenumber",
         "posx1": 0,
@@ -13,7 +13,7 @@
         ]
     },
     {
-        "nodeid": 2,
+        "id": 2,
         "name": "orangedisplay",
         "type": "singlenumber",
         "posx1": -2,
