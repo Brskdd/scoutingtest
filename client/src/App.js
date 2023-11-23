@@ -23,8 +23,8 @@ function App() {
 
   return (
     <div>
-      
-      <Node val="apples" />
+      <Node id="1" name="appledisplay" type="singlenumber" posx1="0" posy1="0" posx2="15" posy2="5" color="ff0000" values="apples" />
+      <Node id="2" name="orangedisplay" type="singlenumber" posx1="-2" posy1="6" posx2="8" posy2="8" color="ffff00" values="oranges" />
     </div>
   )
 
