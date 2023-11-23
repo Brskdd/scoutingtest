@@ -21,6 +21,7 @@ app.get("/getvalue/:val", (req,res) => {
         console.log("data is " + data)
         const jsondata = JSON.parse(data)
         console.log(jsondata)
+        //find a way to support any schema not just MatchBox
         //blah blah blah look through data for variable and its name
         // ------------------------------------------------------------------- THIS IS PROBABLY A DANGER ZONE TO BOLOW UP IN THE FACE ONCE THE REAL DATA COMES IN
         const returnval = jsondata[value]
