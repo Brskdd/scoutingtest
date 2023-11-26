@@ -14,7 +14,7 @@ function NodeManager({ bank }) {
                 console.error("Error fetching nodebankvalues:", error);
             });
 
-    }, []);
+    }, [bank]);
     //get nodes for bank
     //for each id create a node with those params
     return (

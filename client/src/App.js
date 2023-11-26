@@ -2,12 +2,13 @@
 import React, { useEffect, useState } from "react"
 import Node from "./components/Node.js"
 import NodeManager from "./components/NodeManager.js"
+import BankInput from "./components/BankInput.js"
 let timespolled = 0;
 
 function App() {
   const [bank, setbank] = useState(null)
   const [nodebank, setnodebank] = useState(null)
-  let selectedbank = "MatchBox" // make sure to hook this up to a button to request
+  const [selectedbank, setselectedbank] = useState("a") // make sure to hook this up to a button to request
   useEffect(() => {
     fetch("/getnodebank/" + selectedbank)
         .then(response => response.text())
@@ -32,13 +33,17 @@ function App() {
         //gn cutie :3333 DONT FORGET ME TOMORROW
 }, []);
 
-
-
   //create a nodemanager that FETCHes nodes.json and then iterates through the nodes to load them into the webpage
+
+  const forwardselectedbank = (value) => {
+    setselectedbank(value)
+  }
 
   return (
     <div>
-      <NodeManager bank="MatchBox" />
+      <p>Selected bank is {selectedbank}</p>
+      <BankInput onChange={forwardselectedbank}/>
+      <NodeManager bank={selectedbank} />
     </div>
   )
 

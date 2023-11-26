@@ -8,3 +8,7 @@ ai suggestion
 how data is organized
 dictionary of teams
 per team is an array of matches in each match is pairs
+
+in the case i made a cheap form to create nodes develop an actual ui to set them up
+
+program blows up if selected blank is null
