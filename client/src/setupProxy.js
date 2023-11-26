@@ -2,6 +2,15 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function(app) {
   app.use(
+    '/getbank',
+    createProxyMiddleware({
+      target: 'http://localhost:5000',
+      changeOrigin: true,
+    })
+  )
+
+  //DAWG WHAT IS THIS WHY NOT JUST GRAB THE ENTIRE JSON FILE INSTEAD OF PULLING EACH THING ONE BY ONE
+  app.use(
     '/api',
     createProxyMiddleware({
       target: 'http://localhost:5000',

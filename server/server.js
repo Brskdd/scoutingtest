@@ -22,28 +22,17 @@ app.get("/api", (req, res) => {
     res.send(randvar.toString())
 })
 
-//i feel like i should get rid of this
-app.get("/getvalue/:val", (req, res) => {
-    console.log("fetch requesting " + req.params.val)
-    const value = req.params.val;
-    const file = path.join(__dirname, "../schemas/MatchBox/data.json")
-    fs.readFile(file, "utf-8", (err, data) => {
-        console.log("data is " + data)
-        const jsondata = JSON.parse(data)
-        console.log(jsondata)
-        //find a way to support any schema not just MatchBox
-        //blah blah blah look through data for variable and its name
-        // ------------------------------------------------------------------- THIS IS PROBABLY A DANGER ZONE TO BOLOW UP IN THE FACE ONCE THE REAL DATA COMES IN
-        const returnval = jsondata[value]
-        console.log(returnval)
-        res.send(returnval.toString())
-    })
-})
+//i feel like i should get rid of this nvm ignore the comment i actually did X333333
 
-app.get("/getbank/:val"), (req, res) => {
+app.get("/getbank/:val", (req, res) => {
     console.log("fetch req " + req.params.val)
     const value = req.params.val
-}
+    const file = path.join(__dirname, "../banks/" + value + "/data.json")
+    fs.readFile(file, "utf-8", (err, data) => {
+        console.log(data)
+        res.send(data)
+    })
+})
 
 //BLAH BLAH BLAH MAGMA TELLING ME TO CHECK THE FIREBASE FOR THANG AND MOVE IT INTO THE BANK
 
