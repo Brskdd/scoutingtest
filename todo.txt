@@ -4,3 +4,7 @@
 
 whiteboard system
 ai suggestion
+
+how data is organized
+dictionary of teams
+per team is an array of matches in each match is pairs
