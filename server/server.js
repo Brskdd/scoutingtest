@@ -24,15 +24,27 @@ app.get("/api", (req, res) => {
 
 //i feel like i should get rid of this nvm ignore the comment i actually did X333333
 
-app.get("/getbank/:val", (req, res) => {
-    console.log("fetch req " + req.params.val)
-    const value = req.params.val
-    const file = path.join(__dirname, "../banks/" + value + "/data.json")
+app.get("/getnodebank/:nodeval", (req, res) => {
+    console.log("node fetch req " + req.params.nodeval)
+    const value = req.params.nodeval
+    const file = path.join(__dirname, "../banks/" + value + "/nodes.json")
     fs.readFile(file, "utf-8", (err, data) => {
         console.log(data)
         res.send(data)
     })
 })
+
+app.get("/getbank/:val", (req, res) => {
+    //console.log("fetch req " + req.params.val)
+    const value = req.params.val
+    const file = path.join(__dirname, "../banks/" + value + "/data.json")
+    fs.readFile(file, "utf-8", (err, data) => {
+        //console.log(data)
+        res.send(data)
+    })
+})
+
+
 
 //BLAH BLAH BLAH MAGMA TELLING ME TO CHECK THE FIREBASE FOR THANG AND MOVE IT INTO THE BANK
 
@@ -44,7 +56,7 @@ function grabFirebase(path) {
     datareference.once("value", (snapshot) => {
         const data = snapshot.val()
         //console.log("Data: " + JSON.stringify(data))
-        
+
         //turn into json format where there are no comments and its structured by teams and for each team it is an array of matches and each match is a list of pairs so like
 
 

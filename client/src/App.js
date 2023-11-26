@@ -1,12 +1,23 @@
 //import { response } from "express"
 import React, { useEffect, useState } from "react"
 import Node from "./components/Node.js"
+import NodeManager from "./components/NodeManager.js"
 let timespolled = 0;
 
 function App() {
   const [bank, setbank] = useState(null)
-  let selectedbank = "MatchBox"
+  const [nodebank, setnodebank] = useState(null)
+  let selectedbank = "MatchBox" // make sure to hook this up to a button to request
   useEffect(() => {
+    fetch("/getnodebank/" + selectedbank)
+        .then(response => response.text())
+        .then(nodedata => {
+            setnodebank(nodedata);
+        })
+        .catch(error => {
+            console.error("Error fetching nodebankvalues:", error);
+        });
+
     fetch("/getbank/" + selectedbank)
         .then(response => response.text())
         .then(data => {
@@ -27,9 +38,7 @@ function App() {
 
   return (
     <div>
-      
-      <Node id="1" name="appledisplay" type="singlenumber" posx1="0" posy1="0" posx2="15" posy2="5" color="ff0000" values="apples" />
-      <Node id="2" name="orangedisplay" type="singlenumber" posx1="-2" posy1="6" posx2="8" posy2="8" color="ffff00" values="oranges" />
+      <NodeManager bank="MatchBox" />
     </div>
   )
 

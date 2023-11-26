@@ -1,6 +1,5 @@
-[
-    {
-        "id": 1,
+{
+    "1": {
         "name": "appledisplay",
         "type": "singlenumber",
         "posx1": 0,
@@ -12,8 +11,7 @@
             "apples"
         ]
     },
-    {
-        "id": 2,
+    "2": {
         "name": "orangedisplay",
         "type": "singlenumber",
         "posx1": -2,
@@ -25,4 +23,4 @@
             "oranges"
         ]
     }
-]
+}
