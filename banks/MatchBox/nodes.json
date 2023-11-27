@@ -7,9 +7,10 @@
         "posx2": 15,
         "posy2": 5,
         "color": "ff0000",
-        "values": [
+        "inputs": [
             "59_6_Teleop High Cones"
-        ]
+        ],
+        "outputs": []
     },
     "2": {
         "name": "get endgame ending position of robot 2714 match 80",
@@ -21,6 +22,7 @@
         "color": "ffff00",
         "values": [
             "2714_80_Endgame Ending Position"
-        ]
+        ],
+        "outputs": []
     }
 }
