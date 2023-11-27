@@ -19,14 +19,7 @@ function App() {
             console.error("Error fetching nodebankvalues:", error);
         });
 
-    fetch("/getbank/" + selectedbank)
-        .then(response => response.text())
-        .then(data => {
-            setbank(data);
-        })
-        .catch(error => {
-            console.error("Error fetching nodevalues:", error);
-        });
+    
 
         //ok great so we are able to pull the formatted json do we want to say like since its matchbox do something
         //oh also can you create like a list of environment variables so the user sees them when they get a dropdown

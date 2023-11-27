@@ -12,3 +12,9 @@ per team is an array of matches in each match is pairs
 in the case i made a cheap form to create nodes develop an actual ui to set them up
 
 program blows up if selected blank is null
+
+if network performance becomes an issue make it so that instead of each node fetching data have the manager fetch it and pass it into each node it makes
+
+how about we actually add a node creation system first
+
+also throw in some css to make it look pretty

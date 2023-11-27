@@ -1,6 +1,6 @@
 {
     "1": {
-        "name": "appledisplay",
+        "name": "get the teleop high cones from robot 59 match 6",
         "type": "singlenumber",
         "posx1": 0,
         "posy1": 0,
@@ -8,19 +8,19 @@
         "posy2": 5,
         "color": "ff0000",
         "values": [
-            "apples"
+            "59_6_Teleop High Cones"
         ]
     },
     "2": {
-        "name": "orangedisplay",
+        "name": "get endgame ending position of robot 2714 match 80",
         "type": "singlenumber",
-        "posx1": -2,
+        "posx1": -12,
         "posy1": 6,
         "posx2": 8,
         "posy2": 8,
         "color": "ffff00",
         "values": [
-            "oranges"
+            "2714_80_Endgame Ending Position"
         ]
     }
 }
