@@ -37,3 +37,7 @@ id foucus on a new popup page
 or tabs in the  "setup mode"
 bedmoder — Today at 9:03 PM
 yeah a config vs display mode
+
+change from team_match_stat to [team,match,stat]
+
+find a way to load react page in its own thing not a browser
