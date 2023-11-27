@@ -18,3 +18,7 @@ if network performance becomes an issue make it so that instead of each node fet
 how about we actually add a node creation system first
 
 also throw in some css to make it look pretty
+
+WHAT IS SENDING SO MANY REQUESTS ITS FREEZING THE COMPUTER
+
+find what keeps spamming requests (they are all called MatchBox if that helps)
