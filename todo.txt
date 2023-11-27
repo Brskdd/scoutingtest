@@ -22,3 +22,18 @@ also throw in some css to make it look pretty
 WHAT IS SENDING SO MANY REQUESTS ITS FREEZING THE COMPUTER
 
 find what keeps spamming requests (they are all called MatchBox if that helps)
+
+09falldamage — Today at 8:59 PM
+awesome, i think a modular backend with math nodes is the next steo
+like take an average of a value over multiple matches'
+bedmoder — Today at 8:59 PM
+yeah
+like be able to set up new environment variables not just stats from data
+09falldamage — Today at 9:00 PM
+yea, like a page dedicated to displaying and creating availble variables
+and types of variables (database, calculated)
+and variable casts for certian dictionary keys
+id foucus on a new popup page
+or tabs in the  "setup mode"
+bedmoder — Today at 9:03 PM
+yeah a config vs display mode
