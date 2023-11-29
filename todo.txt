@@ -44,3 +44,10 @@ find a way to load react page in its own thing not a browser
 
 OK NEW PLAN
 in each node have a lsit of inputs and outputs and then maybe have a routing file that attaches thigns to names???
+
+
+
+NODE TODO:
+Pie chart (auto starts)
+End game challenge attempts VS success 
+Single var range bars
