@@ -4,7 +4,7 @@ import Node from "./components/Node.js"
 import NodeManager from "./components/NodeManager.js"
 import BankInput from "./components/BankInput.js"
 let timespolled = 0;
-
+window.open("localhost:3000", "Magma")
 function App() {
   const [bank, setbank] = useState(null)
   const [nodebank, setnodebank] = useState(null)

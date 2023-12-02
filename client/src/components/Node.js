@@ -23,9 +23,9 @@ function Node({ id, bank, selection }) {
 
     //uh oh
     function iterate(obj, target) {
-        for (const [key,val] of Object.entries(obj)) {
+        for (const [key, val] of Object.entries(obj)) {
             if (key == target) {
-                return(val)
+                return (val)
             }
         }
     }
@@ -33,15 +33,20 @@ function Node({ id, bank, selection }) {
     fetch("/getbank/" + selection)
         .then(response => response.text())
         .then(data => {
-            const vals = (params.values[0]).split("_")
-            setsplitvals(vals)
-            setstatresponse(iterate(iterate(iterate(JSON.parse(data),splitvals[0]),splitvals[1]),splitvals[2])) //probably a danger zone
+            switch (params.type) {
+                case "singlenumber":
+                    const vals = params.inputs[0]
+                    setsplitvals(vals)
+                    setstatresponse(iterate(iterate(iterate(JSON.parse(data), splitvals[0]), splitvals[1]), splitvals[2])) //probably a danger zone
+                    break;
+            }
+
         })
         .catch(error => {
             console.error("Error fetching nodevalues:", error);
         });
 
-    
+
     //const displaydata
     return (
         <div style={divStyle}>

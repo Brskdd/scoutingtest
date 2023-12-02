@@ -44,3 +44,9 @@ find a way to load react page in its own thing not a browser
 
 OK NEW PLAN
 in each node have a lsit of inputs and outputs and then maybe have a routing file that attaches thigns to names???
+
+more advanced node reading, more steps in the node
+inside node.js 
+
+instead of node js switch case make each node type its own file so that you can easily create new nodes without having to open up node.js
+for now hardcode the types but if we can in the future create a ui to create nodes
