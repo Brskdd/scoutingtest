@@ -50,3 +50,9 @@ inside node.js
 
 instead of node js switch case make each node type its own file so that you can easily create new nodes without having to open up node.js
 for now hardcode the types but if we can in the future create a ui to create nodes
+
+
+NODE TODO:
+Pie chart (auto starts)
+End game challenge attempts VS success 
+Single var range bars
