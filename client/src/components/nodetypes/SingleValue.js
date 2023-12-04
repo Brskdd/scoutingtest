@@ -4,7 +4,7 @@ function SingleValue({inputs}) {
     const val = inputs[0]
     return (
         <div>
-            
+            <p>test text</p>
         </div>
     )
 }

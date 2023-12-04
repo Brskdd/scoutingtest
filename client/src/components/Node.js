@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
 
 function Node({ id, bank, selection }) {
     const parsedbank = bank
@@ -6,6 +6,7 @@ function Node({ id, bank, selection }) {
     const [bankdata, setbankdata] = useState({});
     const [splitvals, setsplitvals] = useState({});
     const [statresponse, setstatresponse] = useState(null);
+    const [Data, setData] = useState(null);
 
     let offsetx = +params.posx1 * 20 + +window.innerWidth / 2;
     let offsety = +params.posy1 * 20 + +window.innerHeight / 2;
@@ -21,7 +22,7 @@ function Node({ id, bank, selection }) {
         // Add any other styles as needed
     };
 
-    //uh oh
+    //uh oh YEAH UH OH WAS RIGHT WHAT IS THE POINT BEHIND THIS FUNCTION
     function iterate(obj, target) {
         for (const [key, val] of Object.entries(obj)) {
             if (key == target) {
@@ -33,13 +34,8 @@ function Node({ id, bank, selection }) {
     fetch("/getbank/" + selection)
         .then(response => response.text())
         .then(data => {
-            switch (params.type) {
-                case "singlenumber":
-                    const vals = params.inputs[0]
-                    setsplitvals(vals)
-                    setstatresponse(iterate(iterate(iterate(JSON.parse(data), splitvals[0]), splitvals[1]), splitvals[2])) //probably a danger zone
-                    break;
-            }
+            const loadinfo = lazy(() => import("./nodetypes/" + params.type + ".js"))
+            setData(() => loadinfo)
 
         })
         .catch(error => {
@@ -52,10 +48,14 @@ function Node({ id, bank, selection }) {
         <div style={divStyle}>
             <p>bank: {selection}</p>
             <p>name: {params.name}</p>
-            <p>team: {splitvals[0]}</p>
-            <p>match: {splitvals[1]}</p>
-            <p>stat: {splitvals[2]}</p>
-            <p>statresponse: {statresponse}</p>
+
+            <Suspense fallback={
+                <div>
+                    --Data Loading--
+                </div>
+            }>
+            {Data && <Data inputs={params.inputs} />}
+            </Suspense>
         </div>
     );
 }

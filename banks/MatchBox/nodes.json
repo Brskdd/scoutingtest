@@ -1,7 +1,7 @@
 {
     "1": {
         "name": "get the teleop high cones from robot 59 match 6",
-        "type": "singlenumber",
+        "type": "SingleValue",
         "posx1": 0,
         "posy1": 0,
         "posx2": 15,
@@ -14,7 +14,7 @@
     },
     "2": {
         "name": "get endgame ending position of robot 2714 match 80",
-        "type": "singlenumber",
+        "type": "SingleValue",
         "posx1": -12,
         "posy1": 6,
         "posx2": 8,
