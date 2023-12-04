@@ -56,3 +56,6 @@ NODE TODO:
 Pie chart (auto starts)
 End game challenge attempts VS success 
 Single var range bars
+
+
+thought process: nodes are stupid they dont care about id or bank or anything all they care about is ins and outs and what to display nodemanager should do the rest
