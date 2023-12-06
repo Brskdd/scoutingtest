@@ -63,3 +63,8 @@ thought process: nodes are stupid they dont care about id or bank or anything al
 figure out a way to load things into envvars so that its like 00590006TeleopHighCones, 3 (since the bank could change to be a different json structure think about a way to make it so that the path to values isnt hardcoded in)
 
 map out the system so far
+
+map out a way to get good average values that can be set by the user
+
+
+FINAL DELIVERY DATE **JAN 8-9**
