@@ -63,3 +63,11 @@ thought process: nodes are stupid they dont care about id or bank or anything al
 figure out a way to load things into envvars so that its like 00590006TeleopHighCones, 3 (since the bank could change to be a different json structure think about a way to make it so that the path to values isnt hardcoded in)
 
 map out the system so far
+
+what if we make bank a global variable in server
+
+groundwork laid for reading envvars but add in support for writing to the envvars
+
+ok so the getnodebank fetch spam bug is causing major issues figure out what is causing that and take care of it before doing anything else
+
+ok so i figured out the problem it keeps rerendering the nodes and every time it renders a node it calls the fetch

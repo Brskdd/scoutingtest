@@ -25,11 +25,11 @@ app.get("/api", (req, res) => {
 //i feel like i should get rid of this nvm ignore the comment i actually did X333333
 
 app.get("/getnodebank/:nodeval", (req, res) => {
-    console.log("node fetch req " + req.params.nodeval)
+    //console.log("node fetch req " + req.params.nodeval)
     const value = req.params.nodeval
     const file = path.join(__dirname, "../banks/" + value + "/nodes.json")
     fs.readFile(file, "utf-8", (err, data) => {
-        console.log(data)
+        //console.log(data)
         res.send(data)
     })
 })
@@ -44,7 +44,16 @@ app.get("/getbank/:val", (req, res) => {
     })
 })
 
-
+app.get("/getenvvar/:envvar", (req, res) => {
+    //pull up envvars get value to key send back to req
+    const value = req.params.envvar
+    console.log("envvar request " + val)
+    const file = path.join(__dirname, "../banks/" + "MatchBox" /*MAKE THIS A GLOBAL VARIABLE*/ + "/envvars.json")
+    fs.readFile(file, "utf-8", (err, data) => {
+        console.log(data)
+        res.send(data[value])
+    })
+})
 
 //BLAH BLAH BLAH MAGMA TELLING ME TO CHECK THE FIREBASE FOR THANG AND MOVE IT INTO THE BANK
 
@@ -70,6 +79,8 @@ function grabFirebase(path) {
             }
             newdata[team][match] = val
         })
+
+        //hey so like why is there 50 lines of commented out json
 
         /* need to go from
 

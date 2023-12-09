@@ -20,7 +20,7 @@ function NodeManager({ bank }) {
     return (
         <div>
             {nodebank && Object.entries(JSON.parse(nodebank)).map(([key, val]) => (
-                <Node id={key} bank={val} selection={bank} />
+                <Node key={key} id={key} bank={val} selection={bank} />
             ))}
         </div>
     )

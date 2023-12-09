@@ -54,7 +54,7 @@ function Node({ id, bank, selection }) {
                     --Data Loading--
                 </div>
             }>
-            {Data && <Data inputs={params.inputs} />}
+            {Data && <Data inputs={params.inputs} /> /*SO ON NODE CREATION IT SEES WHAT IT RETURNS AND MAKES THAT A PAIR IN THE */}
             </Suspense>
         </div>
     );
