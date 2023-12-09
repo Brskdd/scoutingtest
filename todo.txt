@@ -71,3 +71,7 @@ groundwork laid for reading envvars but add in support for writing to the envvar
 ok so the getnodebank fetch spam bug is causing major issues figure out what is causing that and take care of it before doing anything else
 
 ok so i figured out the problem it keeps rerendering the nodes and every time it renders a node it calls the fetch
+map out a way to get good average values that can be set by the user
+
+
+FINAL DELIVERY DATE **JAN 8-9**
