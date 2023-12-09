@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import Node from "./components/Node.js"
 import NodeManager from "./components/NodeManager.js"
 import BankInput from "./components/BankInput.js"
+
 let timespolled = 0;
 function App() {
   const [bank, setbank] = useState(null)
@@ -33,6 +34,7 @@ function App() {
 
   return (
     <div>
+      <p className="bg-blue-500">tailwind test</p>
       <p>Selected bank is {selectedbank}</p>
       <BankInput onChange={forwardselectedbank}/>
       <NodeManager bank={selectedbank} />

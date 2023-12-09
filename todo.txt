@@ -1,3 +1,5 @@
+!!!messages with exclamations like this means theyre resolved/just info
+
 #1 priority match system (Call it MatchBox?)
 #2 priority FireScope (scouting other robots and running analysis)
 #3 priority FireWatch (scouting our own robot and analys of its data on the field live and in general)
@@ -5,30 +7,30 @@
 whiteboard system
 ai suggestion
 
-how data is organized
-dictionary of teams
-per team is an array of matches in each match is pairs
+!!!how data is organized
+!!!dictionary of teams
+!!!per team is an array of matches in each match is pairs
 
 in the case i made a cheap form to create nodes develop an actual ui to set them up
 
-program blows up if selected blank is null
+!!!program blows up if selected blank is null
 
 if network performance becomes an issue make it so that instead of each node fetching data have the manager fetch it and pass it into each node it makes
 
-how about we actually add a node creation system first
+!!!how about we actually add a node creation system first
 
-also throw in some css to make it look pretty
+!!!also throw in some css to make it look pretty
 
-WHAT IS SENDING SO MANY REQUESTS ITS FREEZING THE COMPUTER
+!!!WHAT IS SENDING SO MANY REQUESTS ITS FREEZING THE COMPUTER
 
-find what keeps spamming requests (they are all called MatchBox if that helps)
+!!!find what keeps spamming requests (they are all called MatchBox if that helps)
 
-09falldamage — Today at 8:59 PM
-awesome, i think a modular backend with math nodes is the next steo
+!!!09falldamage — Today at 8:59 PM
+!!!awesome, i think a modular backend with math nodes is the next steo
 like take an average of a value over multiple matches'
-bedmoder — Today at 8:59 PM
-yeah
-like be able to set up new environment variables not just stats from data
+!!!bedmoder — Today at 8:59 PM
+!!!yeah
+!!!like be able to set up new environment variables not just stats from data
 09falldamage — Today at 9:00 PM
 yea, like a page dedicated to displaying and creating availble variables
 and types of variables (database, calculated)
@@ -38,18 +40,18 @@ or tabs in the  "setup mode"
 bedmoder — Today at 9:03 PM
 yeah a config vs display mode
 
-change from team_match_stat to [team,match,stat]
+!!!change from team_match_stat to [team,match,stat]
 
 find a way to load react page in its own thing not a browser
 
-OK NEW PLAN
-in each node have a lsit of inputs and outputs and then maybe have a routing file that attaches thigns to names???
+!!!OK NEW PLAN
+!!!in each node have a lsit of inputs and outputs and then maybe have a routing file that attaches thigns to names???
 
-more advanced node reading, more steps in the node
-inside node.js 
+!!!more advanced node reading, more steps in the node
+!!!inside node.js 
 
-instead of node js switch case make each node type its own file so that you can easily create new nodes without having to open up node.js
-for now hardcode the types but if we can in the future create a ui to create nodes
+!!!instead of node js switch case make each node type its own file so that you can easily create new nodes without having to open up node.js
+!!!for now hardcode the types but if we can in the future create a ui to create nodes
 
 
 NODE TODO:
@@ -58,23 +60,24 @@ End game challenge attempts VS success
 Single var range bars
 
 
-thought process: nodes are stupid they dont care about id or bank or anything all they care about is ins and outs and what to display nodemanager should do the rest
+!!!thought process: nodes are stupid they dont care about id or bank or anything all they care about is ins and outs and what to display nodemanager should do the rest
 
-figure out a way to load things into envvars so that its like 00590006TeleopHighCones, 3 (since the bank could change to be a different json structure think about a way to make it so that the path to values isnt hardcoded in)
+!!!figure out a way to load things into envvars so that its like 00590006TeleopHighCones, 3 (since the bank could change to be a different json structure think about a way to make it so that the path to values isnt hardcoded in)
 
 map out the system so far
 
-what if we make bank a global variable in server
+!!!what if we make bank a global variable in server
+develop a better system for setting globalbank
 
-groundwork laid for reading envvars but add in support for writing to the envvars
+!!!groundwork laid for reading envvars but add in support for writing to the envvars
 
-ok so the getnodebank fetch spam bug is causing major issues figure out what is causing that and take care of it before doing anything else
+!!!ok so the getnodebank fetch spam bug is causing major issues figure out what is causing that and take care of it before doing anything else
 
-ok so i figured out the problem it keeps rerendering the nodes and every time it renders a node it calls the fetch
+!!!ok so i figured out the problem it keeps rerendering the nodes and every time it renders a node it calls the fetch
 
-FIXED THE MEMORY LEAK IM A GENIUS
+!!!FIXED THE MEMORY LEAK IM A GENIUS
 
-
+instead of it repolling everytime the getbank input changes just stick it to a button
 
 map out a way to get good average values that can be set by the user
 
