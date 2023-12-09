@@ -4,10 +4,10 @@ function SingleValue({ inputs }) {
     const val = String(inputs[0][0]).padStart(4, "0") + String(inputs[0][1]).padStart(4, "0") + inputs[0][2]
     const [actualthing, setactualthing] = useState("if you read this then the envvar fetch failed")
     useEffect(() => {
-        fetch("/getenvvar/:val")
+        fetch("/getenvvar/" + val)
             .then(response => response.text())
             .then(data => {
-                actualthing = data
+                setactualthing(data)
             })
             .catch(error => {
                 console.error("checking envvars did not work because aiden is a bad programmer:", error);

@@ -9,7 +9,7 @@ admin.initializeApp({
     databaseURL: "https://sheet-import-test-c264f-default-rtdb.firebaseio.com"
 })
 const database = admin.database()
-
+let globalbank = "MatchBox" //FIGURE OUT A WAY TO CONFIG THIS
 let randvar = 100;
 
 //why did i still leave this here kinda scared to remove it tho ngl
@@ -47,11 +47,11 @@ app.get("/getbank/:val", (req, res) => {
 app.get("/getenvvar/:envvar", (req, res) => {
     //pull up envvars get value to key send back to req
     const value = req.params.envvar
-    console.log("envvar request " + val)
-    const file = path.join(__dirname, "../banks/" + "MatchBox" /*MAKE THIS A GLOBAL VARIABLE*/ + "/envvars.json")
+    console.log("envvar request " + value)
+    const file = path.join(__dirname, "../banks/" + globalbank /*MAKE THIS A GLOBAL VARIABLE i did :))))*/ + "/envvars.json")
     fs.readFile(file, "utf-8", (err, data) => {
         console.log(data)
-        res.send(data[value])
+        res.send((JSON.parse(data))[value])
     })
 })
 

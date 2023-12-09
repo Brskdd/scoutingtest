@@ -1,12 +1,24 @@
 import React, { useState, useEffect, Suspense, lazy } from "react";
 
 function Node({ id, bank, selection }) {
-    const parsedbank = bank
-    const params = parsedbank
-    const [bankdata, setbankdata] = useState({});
-    const [splitvals, setsplitvals] = useState({});
-    const [statresponse, setstatresponse] = useState(null);
+    const parsedbank = bank;
+    const params = parsedbank;
     const [Data, setData] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch("/getbank/" + selection);
+                const data = await response.text();
+                const loadinfo = lazy(() => import("./nodetypes/" + params.type + ".js"));
+                setData(() => loadinfo);
+            } catch (error) {
+                console.error("Error fetching nodevalues:", error);
+            }
+        };
+
+        fetchData();
+    }, [selection, params.type]);
 
     let offsetx = +params.posx1 * 20 + +window.innerWidth / 2;
     let offsety = +params.posy1 * 20 + +window.innerHeight / 2;
@@ -22,39 +34,13 @@ function Node({ id, bank, selection }) {
         // Add any other styles as needed
     };
 
-    //uh oh YEAH UH OH WAS RIGHT WHAT IS THE POINT BEHIND THIS FUNCTION
-    function iterate(obj, target) {
-        for (const [key, val] of Object.entries(obj)) {
-            if (key == target) {
-                return (val)
-            }
-        }
-    }
-
-    fetch("/getbank/" + selection)
-        .then(response => response.text())
-        .then(data => {
-            const loadinfo = lazy(() => import("./nodetypes/" + params.type + ".js"))
-            setData(() => loadinfo)
-
-        })
-        .catch(error => {
-            console.error("Error fetching nodevalues:", error);
-        });
-
-
-    //const displaydata
     return (
         <div style={divStyle}>
             <p>bank: {selection}</p>
             <p>name: {params.name}</p>
 
-            <Suspense fallback={
-                <div>
-                    --Data Loading--
-                </div>
-            }>
-            {Data && <Data inputs={params.inputs} /> /*SO ON NODE CREATION IT SEES WHAT IT RETURNS AND MAKES THAT A PAIR IN THE */}
+            <Suspense fallback={<div>--Data Loading--</div>}>
+                {Data && <Data inputs={params.inputs} />}
             </Suspense>
         </div>
     );

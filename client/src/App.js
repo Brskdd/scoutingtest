@@ -7,7 +7,7 @@ let timespolled = 0;
 function App() {
   const [bank, setbank] = useState(null)
   const [nodebank, setnodebank] = useState(null)
-  const [selectedbank, setselectedbank] = useState("a") // make sure to hook this up to a button to request
+  const [selectedbank, setselectedbank] = useState("...") // make sure to hook this up to a button to request
   useEffect(() => {
     fetch("/getnodebank/" + selectedbank)
         .then(response => response.text())
