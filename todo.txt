@@ -81,5 +81,6 @@ instead of it repolling everytime the getbank input changes just stick it to a b
 
 map out a way to get good average values that can be set by the user
 
+rn nodes in "view mode" obv not final version but figure out config modes
 
 FINAL DELIVERY DATE **JAN 8-9**

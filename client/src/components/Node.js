@@ -36,13 +36,10 @@ function Node({ id, bank, selection }) {
 
     return (
         <div style={divStyle}>
-            <p>bank: {selection}</p>
-            <p>name: {params.name}</p>
-
             <Suspense fallback={<div>--Data Loading--</div>}>
                 {Data && <Data inputs={params.inputs} />}
             </Suspense>
-        </div>
+        </div> //rn its "view mode" obv not final version but figure out config modes
     );
 }
 
