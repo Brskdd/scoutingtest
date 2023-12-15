@@ -23,22 +23,37 @@ function Node({ id, bank, selection }) {
     let offsetx = +params.posx1 * 20 + +window.innerWidth / 2;
     let offsety = +params.posy1 * 20 + +window.innerHeight / 2;
 
+    function dark(input) {
+        let r = Math.floor(parseInt(input.slice(0, 2), 16) * 0.3)
+        let g = Math.floor(parseInt(input.slice(2, 4), 16) * 0.3)
+        let b = Math.floor(parseInt(input.slice(4, 6), 16) * 0.3)
+        const output = r.toString(16).padStart(2, "0") + g.toString(16).padStart(2, "0") + b.toString(16).padStart(2, "0")
+        return (output)
+    }
+
     const divStyle = {
-        padding: "2px",
+        margin: "0px",
+        borderRadius: "15px",
         position: "fixed",
-        backgroundColor: "#" + params.color,
+        padding: "3px",
+        background: `linear-gradient(to bottom, #${params.color}, #${dark(params.color)})`,
         top: offsety + "px",
         left: offsetx + "px",
         width: params.posx2 * 20 + "px",
         height: params.posy2 * 20 + "px",
+        display: "grid",
+        placeItems: "center"
+
         // Add any other styles as needed
     };
 
     return (
-        <div style={divStyle}>
-            <Suspense fallback={<div>--Data Loading--</div>}>
-                {Data && <Data inputs={params.inputs} />}
-            </Suspense>
+        <div style={divStyle} >
+            <div className="bg-gradient-to-b from-theme-fill to-theme-filldark text-white p-2 rounded-xl opacity-90 w-full h-full overflow-auto break-words">
+                <Suspense fallback={<div>--Data Loading--</div>}>
+                    {Data && <Data inputs={params.inputs} />}
+                </Suspense>
+            </div>
         </div> //rn its "view mode" obv not final version but figure out config modes
     );
 }

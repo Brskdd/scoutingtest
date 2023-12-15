@@ -1,4 +1,6 @@
 {
-    "00590006TeleopHighCones": "3",
-    "27140080EndgameEndingPosition": "Engaged"
+    "0005900006TeleopHighCones": "3",
+    "0271400080EndgameEndingPosition": "Engaged",
+    "dummyexportvalue": "whateverusersets",
+    "#3": "#dummyexportvalue"
 }

@@ -4,6 +4,7 @@ import Node from "./components/Node.js"
 import NodeManager from "./components/NodeManager.js"
 import BankInput from "./components/BankInput.js"
 import ToggleMode from "./components/ToggleMode.js"
+import NodeBar from "./components/NodeBar.js"
 let timespolled = 0;
 function App() {
   const [bank, setbank] = useState(null)
@@ -32,21 +33,20 @@ function App() {
   }
 
   return (
-    <div>
-      <div className="h-full w-full fixed top-0 left-0 bg-gray-800 z-0">
-        {/*nodes background*/}
-      </div>
-      <div className="h-40 w-full fixed top-0 left-0 bg-gray-800 z-0">
+    <div className="flex flex-col min-h-screen">
+      <div className="h-1/6 w-full fixed top-0 left-0 bg-theme-primary z-0">
         {/*top bar*/}
-      </div>
-      <div className="relative z-10">
         <p>Selected bank is {selectedbank}</p>
         <BankInput onChange={forwardselectedbank} />
-        <ToggleMode />
-        <NodeManager bank={selectedbank} />
-        <p>test</p>
+        
+        
       </div>
-
+      <div className="fixed w-full h-5/6 bottom-0 bg-gradient-to-b from-theme-backdrop to-theme-backdropdark">
+        <p> hello world</p>
+        <NodeBar />
+      </div>
+      <ToggleMode />
+      <NodeManager bank={selectedbank} />
     </div>
   )
 
