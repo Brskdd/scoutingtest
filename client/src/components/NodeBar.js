@@ -11,7 +11,7 @@ function NodeBar() {
     }
     return (
         <div className="p-4 fixed w-10 h-5/6 right-0 bottom-0 border-2 border-white">
-            <p className="text-white">hi</p>
+            <p className="text-white">sidebar</p>
         </div>
     )
 }

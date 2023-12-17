@@ -1,0 +1,16 @@
+//THIS IS JUST A SKELETON FOR NODE TYPES DO NOT ACTUALLY USE THIS!!! YOU HAVE BEEN WARNED!!! <3
+import React, { useState, useEffect } from "react";
+
+function template({ inputs }) {
+    const val = String(inputs)
+    const [actualthing, setactualthing] = useState("if you read this then the envvar fetch failed")
+    //go read val data
+    //if theres a $ before a key like $whatever then instead of fetching envvars fetch nenvvars (it denotes it as a pointer to the output of another node)
+    return (
+        <div>
+            <p>checks for {val}</p>
+            <p>outputs/returns with {actualthing}</p>
+        </div>
+    )
+}
+export default template

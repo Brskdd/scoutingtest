@@ -14,6 +14,12 @@ module.exports = function(app) {
     })
   );
   app.use(
+    createProxyMiddleware('/getnenvvar', {
+      target: 'http://localhost:5000',
+      changeOrigin: true,
+    })
+  );
+  app.use(
     createProxyMiddleware('/getnodebank', {
       target: 'http://localhost:5000',
       changeOrigin: true,

@@ -47,10 +47,21 @@ app.get("/getbank/:val", (req, res) => {
 app.get("/getenvvar/:envvar", (req, res) => {
     //pull up envvars get value to key send back to req
     const value = req.params.envvar
-    console.log("envvar request " + value)
+    //console.log("envvar request " + value)
     const file = path.join(__dirname, "../banks/" + globalbank /*MAKE THIS A GLOBAL VARIABLE i did :))))*/ + "/envvars.json")
     fs.readFile(file, "utf-8", (err, data) => {
-        console.log(data)
+        //console.log(data)
+        res.send((JSON.parse(data))[value])
+    })
+})
+
+app.get("/getnenvvar/:envvar", (req, res) => {
+    //pull up envvars get value to key send back to req
+    const value = req.params.envvar
+    console.log("nenvvar request " + value)
+    const file = path.join(__dirname, "../banks/" + globalbank /*MAKE THIS A GLOBAL VARIABLE i did :))))*/ + "/nenvvars.json")
+    fs.readFile(file, "utf-8", (err, data) => {
+        console.log("data: " + data)
         res.send((JSON.parse(data))[value])
     })
 })

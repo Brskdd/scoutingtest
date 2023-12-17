@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 
 function SingleValue({ inputs }) {
-    const val = String(inputs[0])
+    let val = String(inputs[0])
     const [actualthing, setactualthing] = useState("if you read this then the envvar fetch failed")
     useEffect(() => {
-        fetch("/getenvvar/" + val)
+        let banktocheck = "/getenvvar/"
+        if (val[0] == "$") {
+            banktocheck = "/getnenvvar/"
+            val = val.slice(1)
+        }
+        fetch(banktocheck + val)
             .then(response => response.text())
             .then(data => {
                 setactualthing(data)
@@ -12,7 +17,7 @@ function SingleValue({ inputs }) {
             .catch(error => {
                 console.error("checking envvars did not work because aiden is a bad programmer:", error);
             });
-        //ok so it gets an envar like 00590006TeleopHighCones find a way to get that key in the envvars for the bank
+        //ok so it gets an envar like 0005900006TeleopHighCones find a way to get that key in the envvars for the bank
         
     },[])
     return (

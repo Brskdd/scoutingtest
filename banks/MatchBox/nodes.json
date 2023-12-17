@@ -9,8 +9,7 @@
         "color": "00ffff ",
         "inputs": [
             "0005900006TeleopHighCones"
-        ],
-        "outputs": []
+        ]
     },
     "2": {
         "name": "get endgame ending position of robot 2714 match 80",
@@ -22,8 +21,7 @@
         "color": "0000ff",
         "inputs": [
             "0271400080EndgameEndingPosition"
-        ],
-        "outputs": []
+        ]
     },
     "3": {
         "name": "dummyexportvalue",
@@ -33,20 +31,20 @@
         "posx2": 8,
         "posy2": 8,
         "color": "ffffff",
-        "inputs": [],
-        "outputs": []
+        "inputs": [
+            "thang"
+        ]
     },
     "4": {
         "name": "dummyreadvalue",
         "type": "SingleValue",
-        "posx1": -20,
+        "posx1": 20,
         "posy1": -10,
         "posx2": 8,
         "posy2": 8,
         "color": "ffffff",
         "inputs": [
-            "#3"
-        ],
-        "outputs": []
+            "$dummyexportvalue"
+        ]
     }
 }
