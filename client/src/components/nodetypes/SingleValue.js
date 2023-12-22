@@ -1,30 +1,43 @@
 import React, { useState, useEffect } from "react";
 
-function SingleValue({ inputs }) {
+function SingleValue({ inputs, name }) {
     let val = String(inputs[0])
     const [actualthing, setactualthing] = useState("if you read this then the envvar fetch failed")
+    const [output, setoutput] = useState("")
     useEffect(() => {
-        let banktocheck = "/getenvvar/"
-        if (val[0] == "$") {
-            banktocheck = "/getnenvvar/"
-            val = val.slice(1)
-        }
-        fetch(banktocheck + val)
-            .then(response => response.text())
-            .then(data => {
+
+        if (val[0] === "$") {
+            setoutput("nenvar")
+            fetch("/getnenvvar/" + val.slice(1)).then(response => response.json()).then(data => {
                 setactualthing(data)
             })
+        } else {
+            setoutput("envar")
+            fetch("/getenvvar/" + val).then(response => response.json()).then(data => {
+                setactualthing(data)
+            })
+        }
+
+        /*setoutput(banktocheck + val)
+        fetch(banktocheck + val)
+            .then(response => response.json())
+            .then(data => {
+                console.log("raw data: " + data)
+                const value = JSON.parse(data)
+                setactualthing(value);
+            })
             .catch(error => {
-                console.error("checking envvars did not work because aiden is a bad programmer:", error);
-            });
-        //ok so it gets an envar like 0005900006TeleopHighCones find a way to get that key in the envvars for the bank
-        
-    },[])
+                console.error("Fetching envvars failed:", error);
+            })*/
+    }, [val, name]);
+
     return (
         <div>
             <p>envvar input is {val}</p>
             <p>actual val is {actualthing}</p>
+            <p>out {output}</p>
         </div>
-    )
+    );
 }
-export default SingleValue
+
+export default SingleValue;

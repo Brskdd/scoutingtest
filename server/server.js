@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const admin = require("firebase-admin")
 const acct = require("../sheet-import-test-c264f-firebase-adminsdk-qa32b-402f4515f0.json")
+const bodyParse = require("body-parser")
 admin.initializeApp({
     credential: admin.credential.cert(acct),
     databaseURL: "https://sheet-import-test-c264f-default-rtdb.firebaseio.com"
@@ -47,21 +48,42 @@ app.get("/getbank/:val", (req, res) => {
 app.get("/getenvvar/:envvar", (req, res) => {
     //pull up envvars get value to key send back to req
     const value = req.params.envvar
-    //console.log("envvar request " + value)
+    console.log("envvar request " + value)
     const file = path.join(__dirname, "../banks/" + globalbank /*MAKE THIS A GLOBAL VARIABLE i did :))))*/ + "/envvars.json")
     fs.readFile(file, "utf-8", (err, data) => {
-        //console.log(data)
+        console.log(data)
         res.send((JSON.parse(data))[value])
     })
 })
 
-app.get("/getnenvvar/:envvar", (req, res) => {
+app.get("/writenenvvar/:nenvvar", (req, res) => {
+    //pull up envvars get value to key send back to req {nodename:[DATA]}
+    console.log("recieved " + req.params.nenvvar)
+    const [name, value] = JSON.parse(req.params.nenvvar)
+    console.log(name + " nenvvar writing " + JSON.stringify(value))
+    const file = path.join(__dirname, "../banks/" + globalbank + "/nenvvars.json")
+    fs.readFile(file, "utf-8", (err, data) => {
+        console.log("name: " + name)
+        console.log("value: " + value)
+        jsondata = JSON.parse(data)
+        jsondata[name] = value
+        fs.writeFile(file, JSON.stringify(jsondata, null, 2), (err) => {
+            if (err) {
+                console.log("writing envvar failed")
+            } else {
+                res.status(200)
+            }
+        })
+    })
+})
+
+app.get("/getnenvvar/:nenvvar", (req, res) => {
     //pull up envvars get value to key send back to req
-    const value = req.params.envvar
+    const value = req.params.nenvvar
     console.log("nenvvar request " + value)
     const file = path.join(__dirname, "../banks/" + globalbank /*MAKE THIS A GLOBAL VARIABLE i did :))))*/ + "/nenvvars.json")
     fs.readFile(file, "utf-8", (err, data) => {
-        console.log("data: " + data)
+        //console.log("data: " + data)
         res.send((JSON.parse(data))[value])
     })
 })

@@ -1,11 +1,14 @@
 //THIS IS JUST A SKELETON FOR NODE TYPES DO NOT ACTUALLY USE THIS!!! YOU HAVE BEEN WARNED!!! <3
 import React, { useState, useEffect } from "react";
 
-function template({ inputs }) {
+function template({ inputs, name }) {
     const val = String(inputs)
     const [actualthing, setactualthing] = useState("if you read this then the envvar fetch failed")
     //go read val data
     //if theres a $ before a key like $whatever then instead of fetching envvars fetch nenvvars (it denotes it as a pointer to the output of another node)
+    //also when input changes add code to send post fetch to server
+    //like const response = fetch("/writenenvvar/" + JSON.stringify(stuff))
+    //btw even if the envvar is "$something" nenvvar outputs are always a list so it could be ["thething"]
     return (
         <div>
             <p>checks for {val}</p>

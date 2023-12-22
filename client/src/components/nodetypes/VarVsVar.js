@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function VarVsVar({inputs, outputs}) {
+function VarVsVar({inputs, name}) {
     const var1 = inputs[0]
     const var2 = inputs[1]
     return (

@@ -38,7 +38,7 @@
     "4": {
         "name": "dummyreadvalue",
         "type": "SingleValue",
-        "posx1": 20,
+        "posx1": 0,
         "posy1": -10,
         "posx2": 8,
         "posy2": 8,

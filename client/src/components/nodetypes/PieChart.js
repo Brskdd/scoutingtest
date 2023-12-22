@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function PieChart({inputs}) {
+function PieChart({inputs, name}) {
 
 }
 

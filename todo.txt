@@ -86,3 +86,5 @@ rn nodes in "view mode" obv not final version but figure out config modes
 it shouldnt be too difficult to port into electron so it can be an app instead of a webpage
 
 FINAL DELIVERY DATE **JAN 8-9**
+
+would it be better to make envvars and nenvvars on frontend

@@ -20,6 +20,12 @@ module.exports = function(app) {
     })
   );
   app.use(
+    createProxyMiddleware('/writenenvvar', {
+      target: 'http://localhost:5000',
+      changeOrigin: true,
+    })
+  );
+  app.use(
     createProxyMiddleware('/getnodebank', {
       target: 'http://localhost:5000',
       changeOrigin: true,

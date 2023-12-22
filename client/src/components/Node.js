@@ -51,7 +51,7 @@ function Node({ id, bank, selection }) {
         <div style={divStyle} >
             <div className="bg-gradient-to-b from-theme-fill to-theme-filldark text-white p-2 rounded-xl opacity-90 w-full h-full overflow-auto break-words">
                 <Suspense fallback={<div>--Data Loading--</div>}>
-                    {Data && <Data inputs={params.inputs} />}
+                    {Data && <Data inputs={params.inputs} name={params.name}/>}
                 </Suspense>
             </div>
         </div> //rn its "view mode" obv not final version but figure out config modes
