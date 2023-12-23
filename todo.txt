@@ -88,3 +88,8 @@ it shouldnt be too difficult to port into electron so it can be an app instead o
 FINAL DELIVERY DATE **JAN 8-9**
 
 would it be better to make envvars and nenvvars on frontend
+
+could we make it so that per bank it contains a loader function that turns raw data into envvars so all we have to do is
+
+import bank/loader.js
+load()

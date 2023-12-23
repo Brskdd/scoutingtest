@@ -5,6 +5,7 @@ const path = require("path");
 const admin = require("firebase-admin")
 const acct = require("../sheet-import-test-c264f-firebase-adminsdk-qa32b-402f4515f0.json")
 const bodyParse = require("body-parser")
+
 admin.initializeApp({
     credential: admin.credential.cert(acct),
     databaseURL: "https://sheet-import-test-c264f-default-rtdb.firebaseio.com"
@@ -51,8 +52,8 @@ app.get("/getenvvar/:envvar", (req, res) => {
     console.log("envvar request " + value)
     const file = path.join(__dirname, "../banks/" + globalbank /*MAKE THIS A GLOBAL VARIABLE i did :))))*/ + "/envvars.json")
     fs.readFile(file, "utf-8", (err, data) => {
-        console.log(data)
-        res.send((JSON.parse(data))[value])
+        console.log("sending back " + (JSON.parse(data))[value])
+        res.send(((JSON.parse(data))[value].toString()))
     })
 })
 
@@ -90,6 +91,12 @@ app.get("/getnenvvar/:nenvvar", (req, res) => {
 
 //BLAH BLAH BLAH MAGMA TELLING ME TO CHECK THE FIREBASE FOR THANG AND MOVE IT INTO THE BANK
 
+
+//could we make it so that per bank it contains a loader function that turns raw data into envvars so all we have to do is
+/*
+import bank/loader.js
+load()
+*/
 function grabFirebase(path) {
 
     const datapath = "/" + "2023Worlds" //should i implement a way to change this later

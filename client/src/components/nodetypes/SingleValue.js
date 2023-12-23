@@ -7,13 +7,14 @@ function SingleValue({ inputs, name }) {
     useEffect(() => {
 
         if (val[0] === "$") {
-            setoutput("nenvar")
+            setoutput("/getnenvvar/" + val.slice(1))
             fetch("/getnenvvar/" + val.slice(1)).then(response => response.json()).then(data => {
                 setactualthing(data)
             })
         } else {
-            setoutput("envar")
-            fetch("/getenvvar/" + val).then(response => response.json()).then(data => {
+            setoutput("/getenvvar/" + val)
+            fetch("/getenvvar/" + val).then(response => response.text()).then(data => {
+                console.log("envvar recieved " + data)
                 setactualthing(data)
             })
         }
