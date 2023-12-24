@@ -72,7 +72,8 @@ app.get("/writenenvvar/:nenvvar", (req, res) => {
             if (err) {
                 console.log("writing envvar failed")
             } else {
-                res.status(200)
+                res.sendStatus(200)
+                console.log("successful envvar write")
             }
         })
     })
