@@ -6,18 +6,28 @@ function SingleValue({ inputs, name }) {
     const [output, setoutput] = useState("")
     useEffect(() => {
 
-        if (val[0] === "$") {
-            setoutput("/getnenvvar/" + val.slice(1))
-            fetch("/getnenvvar/" + val.slice(1)).then(response => response.json()).then(data => {
-                setactualthing(data)
-            })
-        } else {
-            setoutput("/getenvvar/" + val)
-            fetch("/getenvvar/" + val).then(response => response.text()).then(data => {
-                console.log("envvar recieved " + data)
-                setactualthing(data)
-            })
-        }
+        setInterval(() => {
+            if (val[0] === "$") {
+                setoutput("/getnenvvar/" + val.slice(1))
+                
+                fetch("/getnenvvar/" + val.slice(1)).then(response => response.json()).then(data => {
+                    setactualthing(data)
+                    fetch("/writenenvvar/" + JSON.stringify([name,data]))
+                })
+            } else {
+                setoutput("/getenvvar/" + val)
+                //console.log("/writenenvvar/" + JSON.stringify([name,actualthing]))
+                fetch("/getenvvar/" + val).then(response => response.text()).then(data => {
+                    console.log("envvar recieved " + data)
+                    setactualthing(data)
+                    console.log(data)
+                })
+            }
+            //console.log("/writenenvvar/" + JSON.stringify([name,actualthing]))
+            
+            
+        }, 500);
+
 
         /*setoutput(banktocheck + val)
         fetch(banktocheck + val)
@@ -30,7 +40,13 @@ function SingleValue({ inputs, name }) {
             .catch(error => {
                 console.error("Fetching envvars failed:", error);
             })*/
-    }, [val, name]);
+    }, []);
+
+    /*useEffect(() => {
+        console.log("/writenenvvar/" + JSON.stringify([name,actualthing]))
+        //update nennvar
+        //fetch("/writenenvvar/" + JSON.stringify([name,actualthing]))
+    },actualthing)*/
 
     return (
         <div>

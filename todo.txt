@@ -42,7 +42,7 @@ yeah a config vs display mode
 
 !!!change from team_match_stat to [team,match,stat]
 
-find a way to load react page in its own thing not a browser
+!!!find a way to load react page in its own thing not a browser
 
 !!!OK NEW PLAN
 !!!in each node have a lsit of inputs and outputs and then maybe have a routing file that attaches thigns to names???
@@ -64,7 +64,7 @@ Single var range bars
 
 !!!figure out a way to load things into envvars so that its like 00590006TeleopHighCones, 3 (since the bank could change to be a different json structure think about a way to make it so that the path to values isnt hardcoded in)
 
-map out the system so far
+!!!map out the system so far
 
 !!!what if we make bank a global variable in server
 develop a better system for setting globalbank

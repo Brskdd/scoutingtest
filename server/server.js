@@ -49,10 +49,10 @@ app.get("/getbank/:val", (req, res) => {
 app.get("/getenvvar/:envvar", (req, res) => {
     //pull up envvars get value to key send back to req
     const value = req.params.envvar
-    console.log("envvar request " + value)
+    //console.log("envvar request " + value)
     const file = path.join(__dirname, "../banks/" + globalbank /*MAKE THIS A GLOBAL VARIABLE i did :))))*/ + "/envvars.json")
     fs.readFile(file, "utf-8", (err, data) => {
-        console.log("sending back " + (JSON.parse(data))[value])
+        //console.log("sending back " + (JSON.parse(data))[value])
         res.send(((JSON.parse(data))[value].toString()))
     })
 })
@@ -172,7 +172,7 @@ function grabFirebase(path) {
 }
 
 
-grabFirebase("Matchbox")
+//grabFirebase("Matchbox") ONLY RUN THIS IF FOR SOME REASON YOU NEED TO UPDATE THE FIREBASE DATA
 
 
 
