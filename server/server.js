@@ -58,25 +58,25 @@ app.get("/getenvvar/:envvar", (req, res) => {
 })
 
 app.get("/writenenvvar/:nenvvar", (req, res) => {
-    //pull up envvars get value to key send back to req {nodename:[DATA]}
-    console.log("recieved " + req.params.nenvvar)
+    // pull up envvars get value to key and send back to req {nodename:[DATA]}
+    console.log("received " + req.params.nenvvar)
     const [name, value] = JSON.parse(req.params.nenvvar)
     console.log(name + " nenvvar writing " + JSON.stringify(value))
     const file = path.join(__dirname, "../banks/" + globalbank + "/nenvvars.json")
-    fs.readFile(file, "utf-8", (err, data) => {
+
+    try {
+        const data = fs.readFileSync(file, "utf-8")
         console.log("name: " + name)
         console.log("value: " + value)
-        jsondata = JSON.parse(data)
+        const jsondata = JSON.parse(data)
         jsondata[name] = value
-        fs.writeFile(file, JSON.stringify(jsondata, null, 2), (err) => {
-            if (err) {
-                console.log("writing envvar failed")
-            } else {
-                res.sendStatus(200)
-                console.log("successful envvar write")
-            }
-        })
-    })
+        fs.writeFileSync(file, JSON.stringify(jsondata, null, 2))
+        res.sendStatus(200)
+        console.log("successful envvar write")
+    } catch (err) {
+        console.log("writing envvar failed - ", err)
+        res.sendStatus(500)
+    }
 })
 
 app.get("/getnenvvar/:nenvvar", (req, res) => {
