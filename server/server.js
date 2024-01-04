@@ -13,7 +13,7 @@ admin.initializeApp({
 const database = admin.database()
 let globalbank = "MatchBox" //FIGURE OUT A WAY TO CONFIG THIS
 let randvar = 100;
-
+let mode = "view"
 //why did i still leave this here kinda scared to remove it tho ngl
 function randtherandvar() {
     randvar = Math.floor((Math.random()) * 100)
@@ -88,6 +88,17 @@ app.get("/getnenvvar/:nenvvar", (req, res) => {
         //console.log("data: " + data)
         res.send((JSON.parse(data))[value])
     })
+})
+
+app.get("/setmode/:mode", (req, res) => {
+    const value = req.params.mode
+    console.log("switching mode to " + value)
+    mode = value
+    res.sendStatus(200)
+})
+
+app.get("/getmode", (req, res) => {
+    res.send(mode)
 })
 
 //BLAH BLAH BLAH MAGMA TELLING ME TO CHECK THE FIREBASE FOR THANG AND MOVE IT INTO THE BANK

@@ -8,6 +8,18 @@ module.exports = function(app) {
     })
   );
   app.use(
+    createProxyMiddleware('/setmode', {
+      target: 'http://localhost:5000',
+      changeOrigin: true,
+    })
+  );
+  app.use(
+    createProxyMiddleware('/getmode', {
+      target: 'http://localhost:5000',
+      changeOrigin: true,
+    })
+  );
+  app.use(
     createProxyMiddleware('/getenvvar', {
       target: 'http://localhost:5000',
       changeOrigin: true,
