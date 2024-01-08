@@ -24,8 +24,6 @@ app.get("/api", (req, res) => {
     res.send(randvar.toString())
 })
 
-//i feel like i should get rid of this nvm ignore the comment i actually did X333333
-
 app.get("/getnodebank/:nodeval", (req, res) => {
     //console.log("node fetch req " + req.params.nodeval)
     const value = req.params.nodeval
@@ -54,6 +52,7 @@ app.get("/getenvvar/:envvar", (req, res) => {
     fs.readFile(file, "utf-8", (err, data) => {
         //console.log("sending back " + (JSON.parse(data))[value])
         res.send(((JSON.parse(data))[value].toString()))
+
     })
 })
 
@@ -101,6 +100,51 @@ app.get("/getmode", (req, res) => {
     res.send(mode)
 })
 
+app.get("/getnodetypes", (req, res) => {
+    const folder = path.join(__dirname, "../client/src/components/nodetypes")
+    let sendback = []
+    fs.readdir(folder, (err, files) => {
+        files.forEach(file => {
+            console.log(file)
+            if (file.endsWith(".js")) {
+                sendback.push(path.parse(file).name)
+            }
+        })
+        res.send(sendback)
+    })
+})
+
+app.get("/createnode/:data", (req, res) => {
+    const params = JSON.parse(req.params.data)
+    console.log(params)
+    const file = path.join(__dirname, "../banks/" + globalbank + "/nodes.json")
+    fs.readFile(file, "utf-8", (err, data) => {
+        nodes = JSON.parse(data)
+        const newnode = {
+            "name": params.name,
+            "type": params.nodetype,
+            "posx1": params.x1,
+            "posy1": params.y1,
+            "posx2": params.x2,
+            "posy2": params.y2,
+            "color": params.color,
+            "inputs": []
+        }
+        console.log(newnode)
+        const key = Object.keys(nodes).length + 1
+        nodes[key] = newnode
+        //console.log(data)
+        fs.writeFile(file, JSON.stringify(nodes, null, 4), (err) => {
+            if (err) {
+                console.error("err:", err)
+                res.sendStatus(500)
+                return
+            }
+            res.sendStatus(200)
+        });
+    })
+})
+
 //BLAH BLAH BLAH MAGMA TELLING ME TO CHECK THE FIREBASE FOR THANG AND MOVE IT INTO THE BANK
 
 
@@ -132,52 +176,6 @@ function grabFirebase(path) {
             newdata[team][match] = val
         })
 
-        //hey so like why is there 50 lines of commented out json
-
-        /* need to go from
-
-        match1_team1: {
-            param1:1,
-            param2:true
-        },
-        match1_team2: {
-            param1:1,
-            param2:true
-        },
-        match2_team1: {
-            param1:1,
-            param2:true
-        },
-        match2_team2: {
-            param1:1,
-            param2:true
-        },
-
-        to
-        
-        team1: {
-            match1: {
-                param1:1,
-                param2: true
-            },
-            match2: {
-                param1:1,
-                param2: true
-            }
-        },
-        team2: {
-            match1: {
-                param1:1,
-                param2: true
-            },
-            match2: {
-                param1:1,
-                param2: true
-            }
-        }
-
-        also delete notes
-        */
         fs.writeFile("./../banks/" + path + "/data.json", JSON.stringify(newdata, null, 2), (err) => { console.log(err) })
     })
 }

@@ -20,8 +20,8 @@ function Node({ id, bank, selection }) {
         fetchData();
     }, [selection, params.type]);
 
-    let offsetx = +params.posx1 * 20 + +window.innerWidth / 2;
-    let offsety = +params.posy1 * 20 + +window.innerHeight / 2;
+    let offsetx = +params.posx1 * 20
+    let offsety = +params.posy1 * 20 + window.innerHeight / 6
 
     function dark(input) {
         let r = Math.floor(parseInt(input.slice(0, 2), 16) * 0.3)
