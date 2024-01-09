@@ -46,15 +46,5 @@
         "inputs": [
             "$dummyexportvalue"
         ]
-    },
-    "5": {
-        "name": "piss colored nodde",
-        "type": "InputValue",
-        "posx1": 34,
-        "posy1": 5,
-        "posx2": 12,
-        "posy2": 17,
-        "color": "ba9d0d",
-        "inputs": []
     }
 }

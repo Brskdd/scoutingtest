@@ -26,7 +26,7 @@ function SingleValue({ inputs, name }) {
             //console.log("/writenenvvar/" + JSON.stringify([name,actualthing]))
             
             
-        }, 500);
+        }, 5000);
 
 
         /*setoutput(banktocheck + val)
