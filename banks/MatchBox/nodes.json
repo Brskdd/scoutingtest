@@ -27,7 +27,7 @@
         "name": "dummyexportvalue",
         "type": "InputValue",
         "posx1": 20,
-        "posy1": 10,
+        "posy1": 0,
         "posx2": 8,
         "posy2": 8,
         "color": "ffffff",
@@ -48,15 +48,13 @@
         ]
     },
     "5": {
-        "name": "ireallyhopethisworks",
+        "name": "piss colored nodde",
         "type": "InputValue",
-        "posx1": 20,
-        "posy1": 20,
-        "posx2": 40,
-        "posy2": 30,
-        "color": "8f00ff",
-        "inputs": [
-            "0271400080EndgameEndingPosition"
-        ]
+        "posx1": 34,
+        "posy1": 5,
+        "posx2": 12,
+        "posy2": 17,
+        "color": "ba9d0d",
+        "inputs": []
     }
 }

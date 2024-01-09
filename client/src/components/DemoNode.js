@@ -1,3 +1,4 @@
+//abandon all hope ye who enter here
 import React, { useState, useEffect } from "react"
 function DemoNode({ type, oncancel }) {
     const [size, setsize] = useState({
@@ -61,10 +62,10 @@ function DemoNode({ type, oncancel }) {
         oncancel()
         console.log(nodecolor)
         const data = {
-            x1: pos.x,
-            y1: pos.y,
-            x2: pos.x + size.x,
-            y2: pos.y + size.y,
+            x1: Math.round(pos.x / 20),
+            y1: Math.round((pos.y - window.innerHeight / 6 - 20) / 20),
+            x2: Math.round(size.x / 20),
+            y2: Math.round(size.y / 20),
             name: nodename,
             color: nodecolor.slice(1),
             nodetype: type
@@ -82,7 +83,7 @@ function DemoNode({ type, oncancel }) {
                 width: Math.round(size.x / 20) * 20,
                 height: Math.round(size.y / 20) * 20,
                 position: "absolute",
-                top: Math.round(pos.y / 20) * 20 + (window.innerHeight / 6) % 20 - 20,
+                top: Math.round(pos.y / 20) * 20 + (window.innerHeight / 6) % 20 - 20, //you would wonder why this is different then what is in the <p> or being sent to the server. i wonder too. for some reason this works on the page but the numbers dont mach anywhere else.
                 left: Math.round(pos.x / 20) * 20
             }}>
                 <div className="m-8 flex-grow">
@@ -92,6 +93,7 @@ function DemoNode({ type, oncancel }) {
                     <label className="text-white">node name: </label>
                     <input type="text" value={nodename} onChange={(event) => setnodename(event.target.value)}/>
                 </div>
+                <p className="text-white">{Math.round(pos.x / 20) * 20} {Math.round((pos.y - window.innerHeight / 6 - 20) / 20) * 20} {Math.round(size.x / 20) * 20} {Math.round(size.y / 20) * 20}</p>
                 {/*actual content*/}
 
                 <button onMouseDown={movehandle} style={{
