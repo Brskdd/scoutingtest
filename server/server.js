@@ -1,20 +1,17 @@
 const express = require("express")
 const app = express()
-const fs = require("fs");
-const path = require("path");
-const admin = require("firebase-admin")
-const acct = require("../sheet-import-test-c264f-firebase-adminsdk-qa32b-402f4515f0.json")
+const fs = require("fs")
+const path = require("path")
+
 const bodyParse = require("body-parser")
 
-admin.initializeApp({
-    credential: admin.credential.cert(acct),
-    databaseURL: "https://sheet-import-test-c264f-default-rtdb.firebaseio.com"
-})
-const database = admin.database()
+
 let globalbank = "MatchBox" //FIGURE OUT A WAY TO CONFIG THIS
 let randvar = 100;
 let mode = "view"
-//why did i still leave this here kinda scared to remove it tho ngl
+
+const loader = require("../banks/" + globalbank + "/loader.js")
+
 function randtherandvar() {
     randvar = Math.floor((Math.random()) * 100)
 }

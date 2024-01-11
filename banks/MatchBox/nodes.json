@@ -14,8 +14,8 @@
     "2": {
         "name": "get endgame ending position of robot 2714 match 80",
         "type": "SingleValue",
-        "posx1": 12,
-        "posy1": 6,
+        "posx1": 15,
+        "posy1": 0,
         "posx2": 8,
         "posy2": 8,
         "color": "0000ff",
@@ -26,8 +26,8 @@
     "3": {
         "name": "dummyexportvalue",
         "type": "InputValue",
-        "posx1": 20,
-        "posy1": 0,
+        "posx1": 8,
+        "posy1": 10,
         "posx2": 8,
         "posy2": 8,
         "color": "ffffff",
@@ -46,5 +46,15 @@
         "inputs": [
             "$dummyexportvalue"
         ]
+    },
+    "5": {
+        "name": "purple",
+        "type": "InputValue",
+        "posx1": 27,
+        "posy1": 5,
+        "posx2": 10,
+        "posy2": 16,
+        "color": "b30cd4",
+        "inputs": []
     }
 }
