@@ -142,14 +142,26 @@ app.get("/createnode/:data", (req, res) => {
     })
 })
 
+app.get("/writeinput/:data", (req, res) => {
+    //console.log(req.params.data)
+    const stuff = JSON.parse(req.params.data)
+    console.log(stuff)
+    const node = Object.keys(stuff)[0]
+    const val = stuff[node]
+    console.log(node + " " + val)
+    res.sendStatus(200)
+    //IN CASE PC DIES YOU LEFT OFF YOURE WRITING BROWSER COMMANDS FOR NOW BUT http://localhost:3000/writeinput/%7B%22foo%22:%20%7B%22bar%22%7D%7D WORKS IN CONSOLE NO WRITING YET
+})
+
+app.get("/getinput/:data", (req, res) => {
+    const stuff = JSON.parse(req.params.data)
+    const node
+})
+
 //BLAH BLAH BLAH MAGMA TELLING ME TO CHECK THE FIREBASE FOR THANG AND MOVE IT INTO THE BANK
 
 
-//could we make it so that per bank it contains a loader function that turns raw data into envvars so all we have to do is
-/*
-import bank/loader.js
-load()
-*/
+
 function grabFirebase(path) {
 
     const datapath = "/" + "2023Worlds" //should i implement a way to change this later

@@ -2,6 +2,18 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 //EVERYTIME YOU MAKE A NEW FETCH REQUEST REMEMBER TO ADD THE THING HERE
 module.exports = function(app) {
   app.use(
+    createProxyMiddleware('/getinput', {
+      target: 'http://localhost:5000',
+      changeOrigin: true,
+    })
+  );
+  app.use(
+    createProxyMiddleware('/writeinput', {
+      target: 'http://localhost:5000',
+      changeOrigin: true,
+    })
+  );
+  app.use(
     createProxyMiddleware('/createnode', {
       target: 'http://localhost:5000',
       changeOrigin: true,
@@ -56,7 +68,6 @@ module.exports = function(app) {
     })
   );
 
-  //DAWG WHAT IS THIS WHY NOT JUST GRAB THE ENTIRE JSON FILE INSTEAD OF PULLING EACH THING ONE BY ONE
   app.use(
     '/api',
     createProxyMiddleware({

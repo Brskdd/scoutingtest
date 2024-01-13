@@ -31,9 +31,7 @@
         "posx2": 8,
         "posy2": 8,
         "color": "ffffff",
-        "inputs": [
-            "thang"
-        ]
+        "inputs": []
     },
     "4": {
         "name": "dummyreadvalue",
