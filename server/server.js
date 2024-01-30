@@ -155,7 +155,6 @@ app.get("/writeinput/:data", (req, res) => {
 
 app.get("/getinput/:data", (req, res) => {
     const stuff = JSON.parse(req.params.data)
-    const node
 })
 
 //BLAH BLAH BLAH MAGMA TELLING ME TO CHECK THE FIREBASE FOR THANG AND MOVE IT INTO THE BANK
