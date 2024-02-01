@@ -143,19 +143,46 @@ app.get("/createnode/:data", (req, res) => {
 })
 
 app.get("/writeinput/:data", (req, res) => {
-    //console.log(req.params.data)
+    console.log(req.params.data)
     const stuff = JSON.parse(req.params.data)
     console.log(stuff)
     const node = Object.keys(stuff)[0]
     const val = stuff[node]
-    console.log(node + " " + val)
-    res.sendStatus(200)
-    //IN CASE PC DIES YOU LEFT OFF YOURE WRITING BROWSER COMMANDS FOR NOW BUT http://localhost:3000/writeinput/%7B%22foo%22:%20%7B%22bar%22%7D%7D WORKS IN CONSOLE NO WRITING YET
+    console.log(node + " nodeval " + val)
+    const file = path.join(__dirname, "../banks/" + globalbank + "/nodes.json")
+    fs.readFile(file, "utf-8", (err, data) => {
+        const datastuff = JSON.parse(data)
+        datastuff[node].inputs = JSON.stringify(val)
+        fs.writeFile(file, JSON.stringify(datastuff, null, 4), (err) => {
+            if (err) {
+                console.error("err:", err)
+                res.sendStatus(500)
+                return
+            }
+            res.sendStatus(200)
+        });
+    })
+    //IN CASE PC DIES YOU LEFT OFF YOURE WRITING BROWSER COMMANDS FOR NOW BUT http://localhost:3000/writeinput/{"foo": ["bar"]} WORKS IN CONSOLE NO WRITING YET
 })
 
 app.get("/getinput/:data", (req, res) => {
     const stuff = JSON.parse(req.params.data)
+    const file = path.join(__dirname, "../banks/" + globalbank + "/nodes.json")
+    fs.readFile(file, "utf-8", (err, data) => {
+        console.log("check 1")
+        const datastuff = JSON.parse(data)
+        for (const key in datastuff) {
+            console.log("check 2 " + key)
+            if (datastuff[key].name == stuff) {
+                console.log("sending " + JSON.stringify(datastuff[key]))
+                res.send(JSON.stringify(datastuff[key]))
+            }
+        }
+    })
 })
+
+
+
 
 //BLAH BLAH BLAH MAGMA TELLING ME TO CHECK THE FIREBASE FOR THANG AND MOVE IT INTO THE BANK
 

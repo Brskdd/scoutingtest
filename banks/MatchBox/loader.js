@@ -3,7 +3,7 @@ const path = require("path");
 
 function grabFirebase() {
     const admin = require("firebase-admin")
-    const acct = require("../../sheet-import-test-c264f-firebase-adminsdk-qa32b-402f4515f0.json")
+    const acct = require("../../key.json")
 
     admin.initializeApp({
         credential: admin.credential.cert(acct),
