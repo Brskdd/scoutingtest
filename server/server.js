@@ -169,16 +169,17 @@ app.get("/writeinput/:data", (req, res) => {
 })
 
 app.get("/getinput/:data", (req, res) => {
-    const stuff = JSON.parse(req.params.data)
+    const stuff = req.params.data
+    console.log("check 2")
     const file = path.join(__dirname, "../banks/" + globalbank + "/nodes.json")
     fs.readFile(file, "utf-8", (err, data) => {
         console.log("check 1")
         const datastuff = JSON.parse(data)
         for (const key in datastuff) {
             console.log("check 2 " + key)
-            if (datastuff[key].name == stuff) {
+            if (key == stuff) {
                 console.log("sending " + JSON.stringify(datastuff[key]))
-                res.send(JSON.stringify(datastuff[key]))
+                res.send(datastuff[key])
             }
         }
     })
