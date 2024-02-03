@@ -54,5 +54,10 @@
         "posy2": 16,
         "color": "b30cd4",
         "inputs": []
+    },
+    "foo": {
+        "inputs": [
+            "bar"
+        ]
     }
 }

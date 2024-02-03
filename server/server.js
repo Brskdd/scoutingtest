@@ -152,14 +152,17 @@ app.get("/writeinput/:data", (req, res) => {
     const file = path.join(__dirname, "../banks/" + globalbank + "/nodes.json")
     fs.readFile(file, "utf-8", (err, data) => {
         const datastuff = JSON.parse(data)
-        datastuff[node].inputs = JSON.stringify(val)
+        if (!datastuff[node]) {
+            datastuff[node] = {}
+        }
+        datastuff[node].inputs = val
         fs.writeFile(file, JSON.stringify(datastuff, null, 4), (err) => {
             if (err) {
                 console.error("err:", err)
                 res.sendStatus(500)
-                return
+            } else {
+                res.sendStatus(200)
             }
-            res.sendStatus(200)
         });
     })
     //IN CASE PC DIES YOU LEFT OFF YOURE WRITING BROWSER COMMANDS FOR NOW BUT http://localhost:3000/writeinput/{"foo": ["bar"]} WORKS IN CONSOLE NO WRITING YET
