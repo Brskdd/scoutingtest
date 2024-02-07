@@ -6,10 +6,14 @@ function ToggleMode() {
         
         if (mode == "view") {
             setmode("config")
+            console.log("setting config")
+            fetch("/setmode/config")
         } else {
             setmode("view")
+            console.log("setting view")
+            fetch("/setmode/view")
         }
-        fetch("/setmode/" + mode)
+        
     }
     return (
         <button className="bg-theme-secondary fixed bottom-10 left-10 w-20 h-20 rounded-full p-4 shadow-md shadow-theme-secondary active:translate-y-1 active:bg-theme-secondarydark active:shadow-lg active:shadow-theme-secondarydark" onClick={switchmode}>

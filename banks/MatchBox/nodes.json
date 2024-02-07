@@ -55,9 +55,16 @@
         "color": "b30cd4",
         "inputs": []
     },
-    "foo": {
+    "6": {
+        "name": "willlikespink",
+        "type": "SingleValue",
+        "posx1": 41,
+        "posy1": 4,
+        "posx2": 18,
+        "posy2": 15,
+        "color": "ff5c5c",
         "inputs": [
-            "bar"
+            "0005900014TeleopPreferredPickupPosition"
         ]
     }
 }

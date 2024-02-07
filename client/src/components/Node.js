@@ -4,6 +4,21 @@ function Node({ id, bank, selection }) {
     const parsedbank = bank;
     const params = parsedbank;
     const [Data, setData] = useState(null);
+    const [displaymode, setdisplaymode] = useState("view")
+
+    useEffect(() => {
+        const fetchmode = async () => {
+            try {
+                const response = await fetch("/getmode")
+                const data = await response.text()
+                setdisplaymode(data)
+            } catch (error) {
+                console.log("whoops " + error)
+            }
+        }
+
+        const modeinterval = setInterval(fetchmode, 5000)
+    }, [])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -50,9 +65,15 @@ function Node({ id, bank, selection }) {
     return (
         <div style={divStyle} >
             <div className="bg-gradient-to-b from-theme-fill to-theme-filldark text-white p-2 rounded-xl opacity-90 w-full h-full overflow-auto break-words">
-                <Suspense fallback={<div>--Data Loading--</div>}>
-                    {Data && <Data inputs={params.inputs} name={params.name}/>}
-                </Suspense>
+                <p>{displaymode}</p>
+                {displaymode == "view" ? (
+                    <Suspense fallback={<div>--Data Loading--</div>}>
+                        {Data && <Data inputs={params.inputs} name={params.name} />}
+                    </Suspense>
+                ) : (
+                    <p>configging</p>
+                )}
+
             </div>
         </div> //rn its "view mode" obv not final version but figure out config modes
     );
