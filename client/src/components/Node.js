@@ -18,6 +18,7 @@ function Node({ id, bank, selection }) {
         }
 
         const modeinterval = setInterval(fetchmode, 5000)
+        return() => clearInterval(modeinterval)
     }, [])
 
     useEffect(() => {
