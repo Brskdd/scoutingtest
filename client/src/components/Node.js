@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Suspense, lazy } from "react";
+import NodeConfig from "./NodeConfig";
 
 function Node({ id, bank, selection }) {
     const parsedbank = bank;
@@ -58,7 +59,8 @@ function Node({ id, bank, selection }) {
         width: params.posx2 * 20 + "px",
         height: params.posy2 * 20 + "px",
         display: "grid",
-        placeItems: "center"
+        placeItems: "center",
+        zIndex: 1
 
         // Add any other styles as needed
     };
@@ -66,13 +68,12 @@ function Node({ id, bank, selection }) {
     return (
         <div style={divStyle} >
             <div className="bg-gradient-to-b from-theme-fill to-theme-filldark text-white p-2 rounded-xl opacity-90 w-full h-full overflow-auto break-words">
-                <p>{displaymode}</p>
                 {displaymode == "view" ? (
                     <Suspense fallback={<div>--Data Loading--</div>}>
                         {Data && <Data inputs={params.inputs} name={params.name} />}
                     </Suspense>
                 ) : (
-                    <p>configging</p>
+                    <NodeConfig inputs={params.inputs} name={params.name} />
                 )}
 
             </div>
