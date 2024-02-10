@@ -46,13 +46,16 @@
         ]
     },
     "5": {
-        "name": "purple",
-        "type": "InputValue",
-        "posx1": 27,
-        "posy1": 5,
-        "posx2": 10,
-        "posy2": 16,
-        "color": "b30cd4",
-        "inputs": []
+        "name": "conevcube",
+        "type": "PieGraph",
+        "posx1": 28,
+        "posy1": 0,
+        "posx2": 30,
+        "posy2": 23,
+        "color": "009dff",
+        "inputs": [
+            "0005900006TeleopHighCones",
+            "0005900006TeleopHighCubes"
+        ]
     }
 }
