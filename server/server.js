@@ -152,18 +152,22 @@ app.get("/writeinput/:data", (req, res) => {
     const file = path.join(__dirname, "../banks/" + globalbank + "/nodes.json")
     fs.readFile(file, "utf-8", (err, data) => {
         const datastuff = JSON.parse(data)
-        if (!datastuff[node]) {
-            datastuff[node] = {}
-        }
-        datastuff[node].inputs = val
-        fs.writeFile(file, JSON.stringify(datastuff, null, 4), (err) => {
-            if (err) {
-                console.error("err:", err)
-                res.sendStatus(500)
-            } else {
-                res.sendStatus(200)
+
+        for (const key in datastuff) {
+            if (datastuff[key].name == node) {
+                datastuff[key].inputs = val
+                fs.writeFile(file, JSON.stringify(datastuff, null, 4), (err) => {
+                    if (err) {
+                        console.error("err:", err)
+                        res.sendStatus(500)
+                    } else {
+                        res.sendStatus(200)
+                    }
+                });
             }
-        });
+        }
+
+
     })
     //IN CASE PC DIES YOU LEFT OFF YOURE WRITING BROWSER COMMANDS FOR NOW BUT http://localhost:3000/writeinput/{"foo": ["bar"]} WORKS IN CONSOLE NO WRITING YET
 })
@@ -192,7 +196,7 @@ app.get("/getenvkeys", (req, res) => {
         console.log("envkey check 2")
         const list = Object.keys(JSON.parse(data))
         res.send(JSON.stringify(list))
-        
+
     })
 })
 
