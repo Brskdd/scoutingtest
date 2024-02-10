@@ -1,73 +1,79 @@
 {
     "1": {
-        "name": "get the teleop high cones from robot 59 match 6",
-        "type": "SingleValue",
-        "posx1": 0,
-        "posy1": 0,
-        "posx2": 15,
-        "posy2": 5,
-        "color": "00ffff ",
-        "inputs": [
-            "0005900006TeleopHighCones"
-        ]
-    },
-    "2": {
-        "name": "get endgame ending position of robot 2714 match 80",
-        "type": "SingleValue",
-        "posx1": 15,
-        "posy1": 0,
-        "posx2": 8,
-        "posy2": 8,
-        "color": "0000ff",
-        "inputs": [
-            "0005900006AutonomousStartingPosition"
-        ]
-    },
-    "3": {
-        "name": "dummyexportvalue",
+        "name": "TeamNumber",
         "type": "InputValue",
-        "posx1": 8,
-        "posy1": 10,
-        "posx2": 8,
-        "posy2": 8,
-        "color": "ffffff",
+        "posx1": 1,
+        "posy1": 0,
+        "posx2": 12,
+        "posy2": 12,
+        "color": "ff0000",
         "inputs": []
     },
-    "4": {
-        "name": "dummyreadvalue",
-        "type": "SingleValue",
-        "posx1": 0,
-        "posy1": 10,
-        "posx2": 8,
-        "posy2": 8,
-        "color": "ffffff",
-        "inputs": [
-            "$dummyexportvalue"
-        ]
+    "2": {
+        "name": "Match Number",
+        "type": "InputValue",
+        "posx1": 14,
+        "posy1": 0,
+        "posx2": 12,
+        "posy2": 12,
+        "color": "ff4d00",
+        "inputs": []
     },
-    "5": {
-        "name": "conevcube",
+    "3": {
+        "name": "CubesConesPie",
         "type": "PieGraph",
         "posx1": 28,
         "posy1": 0,
-        "posx2": 30,
-        "posy2": 23,
-        "color": "009dff",
+        "posx2": 23,
+        "posy2": 20,
+        "color": "ff00dd",
         "inputs": [
             "0005900006TeleopHighCones",
             "0005900006TeleopHighCubes"
         ]
     },
-    "6": {
-        "name": "rangevaltest",
+    "4": {
+        "name": "ScoresHistory",
         "type": "RangeVal",
+        "posx1": 52,
+        "posy1": 1,
+        "posx2": 12,
+        "posy2": 12,
+        "color": "009dff",
+        "inputs": []
+    },
+    "5": {
+        "name": "ClimbHistory",
+        "type": "RangeVal",
+        "posx1": 52,
+        "posy1": 14,
+        "posx2": 12,
+        "posy2": 12,
+        "color": "0008ff",
+        "inputs": []
+    },
+    "6": {
+        "name": "StartPose",
+        "type": "SingleValue",
         "posx1": 17,
-        "posy1": 9,
+        "posy1": 13,
         "posx2": 10,
-        "posy2": 10,
-        "color": "ff5900",
+        "posy2": 5,
+        "color": "04ff00",
         "inputs": [
-            "0005900006TeleopHighCubes"
+            "0005900006AutonomousStartingPosition"
+        ]
+    },
+    "7": {
+        "name": "EndPose",
+        "type": "SingleValue",
+        "posx1": 17,
+        "posy1": 20,
+        "posx2": 10,
+        "posy2": 5,
+        "color": "73ff00",
+        "inputs": [
+            "0005900006EndgameEndingPosition"
         ]
     }
 }

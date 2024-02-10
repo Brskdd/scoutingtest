@@ -59,7 +59,7 @@ function PieGraph({ inputs, name }) {
         const colors = ["#ff0000", "#0000ff"];
 
         return (
-            <div className="bg-theme-tertiary">
+            <div>
                 <PieChart width={400} height={400}>
                     <Pie
                         data={slices}

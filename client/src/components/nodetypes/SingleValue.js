@@ -50,9 +50,9 @@ function SingleValue({ inputs, name }) {
 
     return (
         <div>
-            <p>envvar input is {val}</p>
-            <p>actual val is {actualthing}</p>
-            <p>out {output}</p>
+            <p>Input: {val}</p>
+            <p>Output: {actualthing}</p>
+            
         </div>
     );
 }
