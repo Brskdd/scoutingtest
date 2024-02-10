@@ -229,7 +229,21 @@ app.get("/newenvvar/:data", (req, res) => {
     })
 })
 
-
+app.get("/loadcount", (req, res) => {
+    const file = path.join(__dirname, "../constants.json")
+    fs.readFile(file, "utf-8", (err, data) => {
+        const json = JSON.parse(data)
+        let count = json["timesopened"]
+        count += 1
+        json["timesopened"] = count
+        res.send(count.toString())
+        fs.writeFile(file, JSON.stringify(json, null, 4), (err) => {
+            if (err) {
+                console.log("FUCK")
+            }
+        })
+    })
+})
 
 
 function grabFirebase(path) {

@@ -8530,6 +8530,5 @@
     "0913800074TeleopMedCones": "0",
     "0913800074TeleopMedCubes": "0",
     "0913800074TeleopPreferredPickupPosition": "Floor Cubes",
-    "0913800074TeleopScoutingShift": "1",
-    "foo": "bar"
+    "0913800074TeleopScoutingShift": "1"
 }

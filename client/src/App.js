@@ -5,6 +5,7 @@ import NodeManager from "./components/NodeManager.js"
 import BankInput from "./components/BankInput.js"
 import ToggleMode from "./components/ToggleMode.js"
 import NodeBar from "./components/NodeBar.js"
+import Logo from "./components/Logo.js"
 let timespolled = 0;
 function App() {
   const [bank, setbank] = useState(null)
@@ -38,7 +39,7 @@ function App() {
         {/*top bar*/}
         <p>Selected bank is {selectedbank}</p>
         <BankInput onChange={forwardselectedbank} />
-        
+        <Logo />
         
       </div>
       <div className="fixed w-full h-5/6 bottom-0 bg-gradient-to-b from-theme-backdrop to-theme-backdropdark">
