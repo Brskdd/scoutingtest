@@ -54,5 +54,10 @@
         "posy2": 16,
         "color": "b30cd4",
         "inputs": []
+    },
+    "get endgame ending position of robot 2714 match 80": {
+        "inputs": [
+            "0005900006AutonomousCrossLine"
+        ]
     }
 }

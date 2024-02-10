@@ -8,35 +8,73 @@ import React, { useState, useEffect } from "react"
 
 function EnvvarReader({ inputs, name }) {
 
-    const [filter, setfilter] = useState()
-    const [list, setlist] = useState([])
+    const [filter, setfilter] = useState("")
+    const [envlist, setenvlist] = useState([])
+    const [nenvlist, setnenvlist] = useState([])
+    const [envlistfilter, setenvlistfilter] = useState([])
+    const [nenvlistfilter, setnenvlistfilter] = useState([])
 
     useEffect(() => {
-        //SAMPLE CODE FOR NOW IT NEEDS TO ACTUALLY DO ITS JOB
-        setlist([
-            "0005900006AutonomousChargeAttempt",
-            "0005900006AutonomousChargeAttempt",
-            "0005900006AutonomousEndOfAutonPos",
-            "0005900006AutonomousHighCones",
-            "0005900006AutonomousHighCubes"
-        ])
-    })
+        fetch("/getenvkeys").then(response => response.json()).then(
+            //data => setenvlist(JSON.parse(data))
+            //data => console.log(data)
+            data => {
+                setenvlist(data)
+                setenvlistfilter(data.filter(item => item.includes(filter)))
+            }
+        )
+    }, [filter])
+    useEffect(() => {
+        fetch("/getnenvkeys").then(response => response.json()).then(
+            //data => setenvlist(JSON.parse(data))
+            //data => console.log(data)
+            data => {
+                setnenvlist(data)
+                setnenvlistfilter(data.filter(item => item.includes(filter)))
+            }
+        )
+    }, [filter])
 
     function selected() {
-
+        const sending = {}
+        sending[name] = [filter]
+        //console.log("/writeinput/" + JSON.stringify(sending))
+        fetch("/writeinput/" + JSON.stringify(sending))
     }
+
     return (
         <div className="fixed items-center justify-center top-1/4 left-1/3 w-1/3 h-2/3 border-4 rounded-2xl bg-gradient-to-b from-theme-backdrop to-theme-backdropdark bg-opacity-100 border-theme-tertiary z-10">
-            <div className="m-4 bg-green-500 w-full h-1/2 block">
-                {list.map((item, index) => (
-                    <p key={index}>{item}</p>
-                ))}
+            <div className="flex flex-row h-full">
+                <div className="m-4 bg-green-500 w-1/2 h-1/2 overflow-auto">
+                    {envlistfilter.map((item, index) => (
+                        <div>
+                            <p key={index}>{item}</p>
+                            <br />
+                        </div>
+
+                    ))}
+                </div>
+                <div className="m-4 bg-green-500 w-1/2 h-1/2 overflow-auto">
+                    {nenvlistfilter.map((item, index) => (
+                        <div>
+                            <p key={index}>{item}</p>
+                            <br />
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div className="m-4 bg-green-500 block">
+                <input
+                    type="text"
+                    value={filter}
+                    onChange={(e) => setfilter(e.target.value)}
+                    placeholder="filter"
+                    className="text-black"
+                />
             </div>
             <div className="m-4 bg-green-500 block">
-                <p>filter</p>
-            </div>
-            <div className="m-4 bottom-0 bg-green-500 block">
-                <p>submit button submit</p>
+                <button onClick={selected}>submit</button>
             </div>
         </div>
     )

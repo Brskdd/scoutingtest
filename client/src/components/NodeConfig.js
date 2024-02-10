@@ -16,7 +16,7 @@ function NodeConfig({ inputs, name }) {
         <div>
             <p>{inputs}</p>
             <button onClick={clickevent}>press me to change input</button>
-            {clicked && <EnvvarReader />}
+            {clicked && <EnvvarReader name={name}/>}
             <p>name: {name}</p>
             
         </div>

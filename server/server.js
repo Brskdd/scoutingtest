@@ -185,10 +185,28 @@ app.get("/getinput/:data", (req, res) => {
     })
 })
 
+app.get("/getenvkeys", (req, res) => {
+    const file = path.join(__dirname, "../banks/" + globalbank /*MAKE THIS A GLOBAL VARIABLE i did :))))*/ + "/envvars.json")
+    console.log("envkey check 1")
+    fs.readFile(file, "utf-8", (err, data) => {
+        console.log("envkey check 2")
+        const list = Object.keys(JSON.parse(data))
+        res.send(JSON.stringify(list))
+        
+    })
+})
+
+app.get("/getnenvkeys", (req, res) => {
+    const file = path.join(__dirname, "../banks/" + globalbank /*MAKE THIS A GLOBAL VARIABLE i did :))))*/ + "/nenvvars.json")
+    fs.readFile(file, "utf-8", (err, data) => {
+        const list = Object.keys(JSON.parse(data)).map(key => "&" + key)
+        res.send(JSON.stringify(list))
+        console.log(list)
+    })
+})
 
 
 
-//BLAH BLAH BLAH MAGMA TELLING ME TO CHECK THE FIREBASE FOR THANG AND MOVE IT INTO THE BANK
 
 
 
