@@ -57,5 +57,17 @@
             "0005900006TeleopHighCones",
             "0005900006TeleopHighCubes"
         ]
+    },
+    "6": {
+        "name": "rangevaltest",
+        "type": "RangeVal",
+        "posx1": 17,
+        "posy1": 9,
+        "posx2": 10,
+        "posy2": 10,
+        "color": "ff5900",
+        "inputs": [
+            "0005900006TeleopHighCubes"
+        ]
     }
 }
