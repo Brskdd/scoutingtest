@@ -201,7 +201,7 @@ app.get("/getenvkeys", (req, res) => {
 })
 
 app.get("/getnenvkeys", (req, res) => {
-    const file = path.join(__dirname, "../banks/" + globalbank /*MAKE THIS A GLOBAL VARIABLE i did :))))*/ + "/nenvvars.json")
+    const file = path.join(__dirname, "../banks/" + globalbank + "/nenvvars.json")
     fs.readFile(file, "utf-8", (err, data) => {
         const list = Object.keys(JSON.parse(data)).map(key => "&" + key)
         res.send(JSON.stringify(list))
@@ -209,7 +209,25 @@ app.get("/getnenvkeys", (req, res) => {
     })
 })
 
-
+app.get("/newenvvar/:data", (req, res) => {
+    const stuff = JSON.parse(req.params.data)
+    const node = Object.keys(stuff)[0]
+    const val = stuff[node]
+    const file = path.join(__dirname, "../banks/" + globalbank + "/envvars.json")
+    fs.readFile(file, "utf-8", (err, data) => {
+        const json = JSON.parse(data)
+        json[node] = val
+        console.log("node is " + node + " value is " + json[node])
+        fs.writeFile(file, JSON.stringify(json, null, 4), (err) => {
+            if (err) {
+                console.error("err:", err)
+                res.sendStatus(500)
+            } else {
+                res.sendStatus(200)
+            }
+        });
+    })
+})
 
 
 
