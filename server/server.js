@@ -229,6 +229,7 @@ app.get("/newenvvar/:data", (req, res) => {
     })
 })
 
+//unused api
 app.get("/loadcount", (req, res) => {
     const file = path.join(__dirname, "../constants.json")
     fs.readFile(file, "utf-8", (err, data) => {
@@ -239,12 +240,11 @@ app.get("/loadcount", (req, res) => {
         res.send(count.toString())
         fs.writeFile(file, JSON.stringify(json, null, 4), (err) => {
             if (err) {
-                console.log("FUCK")
+                console.log("error")
             }
         })
     })
 })
-
 
 function grabFirebase(path) {
 
