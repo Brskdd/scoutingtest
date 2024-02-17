@@ -93,3 +93,59 @@ could we make it so that per bank it contains a loader function that turns raw d
 
 import bank/loader.js
 load()
+
+
+scouting idea: rapidminer to flag scouting data that are outliers, we check for accuracy and the bottom 10% scouters report to ronnie
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+notes
+input match number
+
+per robot information
+
+auto visual bar of game pieces and points auto max is mox ever points scored top axis tick marks of 1's display number same thing on bottom but instead of pieces scored points earned add average bar with fill secondary fill mark showing their minimum
+XXX/////-------
+XXX lowest //// average
+
+same for the bottom 2
+
+tele speaker pointstele amp points
+end game climb total count
+
+end game trap total trap
+
+for total counts make a marker of matches if they did green if they didnt red if not gray like bowling
+
+pie chart showing percentage ratios of start positions
+
+input match schedule importing timetable from tba api
+
+inputting match do dropdown with timetable next to it
+
+another duplicate screen for instead of match select showing teams choose custom teams (for alliance picking)
+
+also figure out how to make it be able to connect to pit computer (it runs on an lte)

@@ -75,5 +75,15 @@
         "inputs": [
             "0005900006EndgameEndingPosition"
         ]
+    },
+    "8": {
+        "name": "uuuuuuuuu",
+        "type": "SingleValue",
+        "posx1": 6,
+        "posy1": 14,
+        "posx2": 11,
+        "posy2": 10,
+        "color": "ffffff",
+        "inputs": []
     }
 }

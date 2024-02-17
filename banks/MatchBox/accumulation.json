@@ -1,0 +1,12 @@
+{
+    "0005900006total" : {
+        "keywords": ["00059", "EndgameEndingPosition"],
+        "scoring": {
+            "Engaged": 2,
+            "Docked": 1,
+            "Parked": 0,
+            "Nothing": -1
+        },
+        "result": 0
+    }
+}

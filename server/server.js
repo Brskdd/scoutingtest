@@ -19,6 +19,7 @@ const runtherandtherandvar = setInterval(randtherandvar, 2000);
 
 app.get("/api", (req, res) => {
     res.send(randvar.toString())
+    refacc("0005900006total")
 })
 
 app.get("/getnodebank/:nodeval", (req, res) => {
@@ -276,8 +277,45 @@ function grabFirebase(path) {
 
 //grabFirebase("Matchbox") ONLY RUN THIS IF FOR SOME REASON YOU NEED TO UPDATE THE FIREBASE DATA
 
+function refacc(id) {
+    let score = 0
+    const accfile = path.join(__dirname, "../banks/" + globalbank + "/accumulation.json")
+    const file = path.join(__dirname, "../banks/" + globalbank + "/envvars.json")
+    let check = {}
+    fs.readFile(accfile, "utf-8", (err, data) => {
+        const stuff = JSON.parse(data)
+        check = stuff[id]
+        console.log(JSON.stringify(check))
+        //for each thing in accumulation.json get all envvar keys that have the keywords and then given the results map it to a number (obv numbers stay the way they are and true is 1 false is 0)
+
+        fs.readFile(file, "utf-8", (err, data) => {
+            const json = JSON.parse(data)
+            const checklist = check["keywords"]
+            //console.log("checklist " + checklist)
+
+            Object.entries(json).forEach(([key, val]) => {
+                let counter = 0
+                checklist.forEach((thing) => {
+                    //console.log(thing)
+                    if (String(key).includes(thing)) {
+                        counter += 1
+                    }
+                })
+                //console.log(counter)
+                if (counter == checklist.length) {
+                    //code for complete match
+                    console.log("gucci")
+                    switch (val.)
+                }
+            })
+            console.log("score " + score)
+            return (score)
+        })
+    })
+}
 
 
 app.listen(5000, () => {
     console.log("server up")
+
 })
