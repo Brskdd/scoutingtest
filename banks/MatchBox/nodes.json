@@ -1,89 +1,68 @@
 {
     "1": {
-        "name": "TeamNumber",
-        "type": "InputValue",
+        "name": "Red1",
+        "type": "RealStuff",
         "posx1": 1,
-        "posy1": 0,
-        "posx2": 12,
+        "posy1": 1,
+        "posx2": 36,
         "posy2": 12,
         "color": "ff0000",
-        "inputs": []
+        "team": 0,
+        "inputs": {}
     },
     "2": {
-        "name": "Match Number",
-        "type": "InputValue",
-        "posx1": 14,
-        "posy1": 0,
-        "posx2": 12,
+        "name": "Red2",
+        "type": "RealStuff",
+        "posx1": 1,
+        "posy1": 14,
+        "posx2": 36,
         "posy2": 12,
-        "color": "ff4d00",
-        "inputs": []
+        "color": "ff2000",
+        "team": 0,
+        "inputs": {}
     },
     "3": {
-        "name": "CubesConesPie",
-        "type": "PieGraph",
-        "posx1": 28,
-        "posy1": 0,
-        "posx2": 23,
-        "posy2": 20,
-        "color": "ff00dd",
-        "inputs": [
-            "0005900006TeleopHighCones",
-            "0005900006TeleopHighCubes"
-        ]
+        "name": "Red3",
+        "type": "RealStuff",
+        "posx1": 1,
+        "posy1": 27,
+        "posx2": 36,
+        "posy2": 12,
+        "color": "ff4000",
+        "team": 0,
+        "inputs": {}
     },
     "4": {
-        "name": "ScoresHistory",
-        "type": "RangeVal",
-        "posx1": 52,
+        "name": "Blue1",
+        "type": "RealStuff",
+        "posx1": 38,
         "posy1": 1,
-        "posx2": 12,
+        "posx2": 36,
         "posy2": 12,
-        "color": "009dff",
-        "inputs": []
+        "color": "0000ff",
+        "team": 0,
+        "inputs": {}
     },
     "5": {
-        "name": "ClimbHistory",
-        "type": "RangeVal",
-        "posx1": 52,
+        "name": "Blue2",
+        "type": "RealStuff",
+        "posx1": 38,
         "posy1": 14,
-        "posx2": 12,
+        "posx2": 36,
         "posy2": 12,
-        "color": "0008ff",
-        "inputs": []
+        "color": "2000ff",
+        "team": 0,
+        "inputs": {}
     },
     "6": {
-        "name": "StartPose",
-        "type": "SingleValue",
-        "posx1": 17,
-        "posy1": 13,
-        "posx2": 10,
-        "posy2": 5,
-        "color": "04ff00",
-        "inputs": [
-            "0005900006AutonomousStartingPosition"
-        ]
-    },
-    "7": {
-        "name": "EndPose",
-        "type": "SingleValue",
-        "posx1": 17,
-        "posy1": 20,
-        "posx2": 10,
-        "posy2": 5,
-        "color": "73ff00",
-        "inputs": [
-            "0005900006EndgameEndingPosition"
-        ]
-    },
-    "8": {
-        "name": "uuuuuuuuu",
-        "type": "SingleValue",
-        "posx1": 6,
-        "posy1": 14,
-        "posx2": 11,
-        "posy2": 10,
-        "color": "ffffff",
-        "inputs": []
+        "name": "Blue3",
+        "type": "RealStuff",
+        "posx1": 38,
+        "posy1": 27,
+        "posx2": 36,
+        "posy2": 12,
+        "color": "4000ff",
+        "team": 0,
+        "inputs": {}
     }
 }

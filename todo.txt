@@ -127,7 +127,8 @@ input match number
 
 per robot information
 
-auto visual bar of game pieces and points auto max is mox ever points scored top axis tick marks of 1's display number same thing on bottom but instead of pieces scored points earned add average bar with fill secondary fill mark showing their minimum
+auto visual bar of game pieces and points auto max is mox ever points scored top axis tick marks of 1's display number same thing on bottom
+but instead of pieces scored points earned add average bar with fill secondary fill mark showing their minimum
 XXX/////-------
 XXX lowest //// average
 

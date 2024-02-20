@@ -305,7 +305,6 @@ function refacc(id) {
                 if (counter == checklist.length) {
                     //code for complete match
                     console.log("gucci")
-                    switch (val.)
                 }
             })
             console.log("score " + score)
@@ -313,6 +312,33 @@ function refacc(id) {
         })
     })
 }
+
+//ex http://localhost:3000/getstat/["59","Endgame Time To Balance"]
+app.get("/getstat/:array", (req, res) => {
+    const parsed = JSON.parse(req.params.array)
+    const team = parsed[0]
+    const key = parsed[1]
+    const file = path.join(__dirname, "../banks/" + globalbank + "/data.json")
+    fs.readFile(file, "utf-8", (err, data) => {
+        if (err) {
+            res.send("error")
+        } else {
+            const stuff = JSON.parse(data)
+            const sendback = []
+            if (stuff[team]) {
+                for (const match in stuff[team]) {
+                    if (stuff[team].hasOwnProperty(match)) {
+                        if (stuff[team][match][key]) {
+                            sendback.push(stuff[team][match][key])
+                        }
+                    }
+                }
+            }
+            console.log("sendback is " + sendback)
+            res.send(sendback)
+        }
+    });
+});
 
 
 app.listen(5000, () => {

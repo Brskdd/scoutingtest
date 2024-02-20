@@ -1,26 +1,12 @@
 import React, { useState, useEffect, Suspense, lazy } from "react";
 import NodeConfig from "./NodeConfig";
 
-function Node({ id, bank, selection }) {
+function Node({ id, bank, selection, defaultteam }) {
     const parsedbank = bank;
     const params = parsedbank;
     const [Data, setData] = useState(null);
     const [displaymode, setdisplaymode] = useState("view")
-
-    useEffect(() => {
-        const fetchmode = async () => {
-            try {
-                const response = await fetch("/getmode")
-                const data = await response.text()
-                setdisplaymode(data)
-            } catch (error) {
-                console.log("whoops " + error)
-            }
-        }
-
-        const modeinterval = setInterval(fetchmode, 5000)
-        return() => clearInterval(modeinterval)
-    }, [])
+    const [team, setteam] = useState()
 
     useEffect(() => {
         const fetchData = async () => {
@@ -36,6 +22,15 @@ function Node({ id, bank, selection }) {
 
         fetchData();
     }, [selection, params.type]);
+
+    useEffect(() => {
+        if (String(defaultteam).startsWith("frc")) {
+            setteam(String(defaultteam).substring(3))
+        } else {
+            setteam(defaultteam)
+        }
+        
+    }, [defaultteam])
 
     let offsetx = +params.posx1 * 20
     let offsety = +params.posy1 * 20 + window.innerHeight / 6
@@ -70,13 +65,19 @@ function Node({ id, bank, selection }) {
             <div className="bg-gradient-to-b from-theme-fill to-theme-filldark text-white p-2 rounded-xl opacity-90 w-full h-full overflow-auto break-words">
                 {displaymode == "view" ? (
                     <Suspense fallback={<div>--Data Loading--</div>}>
-                        {Data && <Data inputs={params.inputs} name={params.name} />}
+                        <p>{defaultteam} -- {team}</p>
+                        {Data && <Data inputs={params.inputs} name={params.name} team={team} />}
+                        <input className="text-black" value={team} onChange={(e) => {
+                            setteam(e.target.value)
+                            console.log(e.target.value)
+                            }}></input>
                     </Suspense>
                 ) : (
                     <NodeConfig inputs={params.inputs} name={params.name} />
                 )}
 
             </div>
+            
         </div> //rn its "view mode" obv not final version but figure out config modes
     );
 }
