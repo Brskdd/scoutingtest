@@ -334,7 +334,7 @@ app.get("/getstat/:array", (req, res) => {
                     }
                 }
             }
-            console.log("sendback is " + sendback)
+            //console.log("sendback is " + sendback)
             res.send(sendback)
         }
     });

@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts"
+import { PieChart, Pie, Cell, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar } from "recharts"
+import BowlingResult from "./BowlingResult";
 
 function RealStuff({ inputs, name, team }) {
+    const COLORS = ["#FF5733", "#C70039", "#900C3F"]
+
     const [autodata, setautodata] = useState([
         {
             name: 'AUTO',
@@ -12,7 +15,7 @@ function RealStuff({ inputs, name, team }) {
     ])
     const [tspeaker, settspeaker] = useState([
         {
-            name: 'T.SPKR',
+            name: 'SPKR',
             low: 1,
             avg: 2,
             high: 3,
@@ -20,7 +23,7 @@ function RealStuff({ inputs, name, team }) {
     ])
     const [tamp, settamp] = useState([
         {
-            name: 'T.AMP',
+            name: 'AMP',
             low: 1,
             avg: 2,
             high: 3,
@@ -53,7 +56,7 @@ function RealStuff({ inputs, name, team }) {
 
     useEffect(() => {
         //console.log(`/getstat/["${team}","Auton High Cones"]`)
-        fetch(`/getstat/["${team}","Autonomous High Cones"]`).then(response => response.json()).then(data => {
+        fetch(`/getstat/["${team}","Endgame Time To Balance"]`).then(response => response.json()).then(data => {
             const values = data.map(num => parseInt(num, 10))
             //console.log(values)
             const low = Math.min(...values)
@@ -65,11 +68,11 @@ function RealStuff({ inputs, name, team }) {
                     name: 'AUTO',
                     low: low,
                     avg: average - low,
-                    high: high - average - low,
+                    high: high - average,
                 }
             ])
         })
-        fetch(`/getstat/["${team}","Teleop Med Cones"]`).then(response => response.json()).then(data => {
+        fetch(`/getstat/["${team}","Teleop High Cones"]`).then(response => response.json()).then(data => {
             const values = data.map(num => parseInt(num, 10))
             //console.log(values)
             const low = Math.min(...values)
@@ -78,14 +81,14 @@ function RealStuff({ inputs, name, team }) {
             const average = sum / values.length
             settspeaker([
                 {
-                    name: 'AUTO',
+                    name: 'SPKR',
                     low: low,
-                    avg: average - low,
-                    high: high - average - low,
+                    avg: average,
+                    high: high,
                 }
             ])
         })
-        fetch(`/getstat/["${team}","Teleop Med Cubes"]`).then(response => response.json()).then(data => {
+        fetch(`/getstat/["${team}","Teleop Low Cubes"]`).then(response => response.json()).then(data => {
             const values = data.map(num => parseInt(num, 10))
             //console.log(values)
             const low = Math.min(...values)
@@ -94,10 +97,10 @@ function RealStuff({ inputs, name, team }) {
             const average = sum / values.length
             settamp([
                 {
-                    name: 'AUTO',
+                    name: 'AMP',
                     low: low,
-                    avg: average - low,
-                    high: high - average - low,
+                    avg: average,
+                    high: high,
                 }
             ])
         })
@@ -105,7 +108,7 @@ function RealStuff({ inputs, name, team }) {
             const values = data.map(item => (item === "true" ? true : false))
             const returning = values.map((bool, index) => ({
                 name: `m${index + 1}`,
-                val: bool ? 1 : 10,
+                val: bool ? 1 : 0,
             }))
             //console.log(returning)
             setclimb(returning)
@@ -114,7 +117,7 @@ function RealStuff({ inputs, name, team }) {
             const values = data.map(item => (item === "true" ? true : false))
             const returning = values.map((bool, index) => ({
                 name: `m${index + 1}`,
-                val: bool ? 1 : 10,
+                val: bool ? 1 : 0,
             }))
             //console.log(values)
             settrap(returning)
@@ -129,34 +132,112 @@ function RealStuff({ inputs, name, team }) {
                 name,
                 value,
             }))
-            console.log(returning)
+            //console.log(returning)
             setstartpos(returning)
         })
 
     }, [team])
 
+    const customTooltip = ({ active, payload, label }) => {
+        if (active && payload && payload.length) {
+            return (
+                <div className="custom-tooltip p-2 bg-white border border-gray-300 shadow-md">
+                    <p className="text-sm text-gray-700">Low: {payload[0].value}</p>
+                    <p className="text-sm text-gray-700">Avg: {payload[0].value + payload[1].value}</p>
+                    <p className="text-sm text-gray-700">High: {payload[0].value + payload[1].value + payload[2].value}</p>
+                </div>
+            );
+        }
+
+        return null
+    }
+
     return (
-        <div>
-            <BarChart
-                width={150}
-                height={200}
-                data={autodata}
-                margin={{
-                    top: 20,
-                    right: 30,
-                    left: 20,
-                    bottom: 5,
-                }}
-            >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="low" stackId="a" fill="#8884d8" />
-                <Bar dataKey="avg" stackId="a" fill="#82ca9d" />
-                <Bar dataKey="high" stackId="a" fill="#aaaaaa" />
-            </BarChart>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div style={{ flex: "1" }}>
+                {/* Bowling Results component in the bottom left */}
+                Climb <BowlingResult list={climb} />
+                Trap <BowlingResult list={trap} />
+            </div>
+            <div style={{ flex: "1" }}>
+                {/* PieChart component in the bottom right */}
+                <PieChart width={150} height={180}>
+                    <Pie
+                        data={startpos}
+                        dataKey="value"
+                        cx="50%"
+                        cy="50%"
+                        outerRadius={60}
+                        fill="#ff0000"
+                    >
+                        {startpos.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        ))}
+                    </Pie>
+                    <Tooltip />
+                </PieChart>
+            </div>
+            <div style={{ display: "flex"}}>
+                <div style={{ flex: "1" }}>
+                    <p>AUTON</p>
+                    <BarChart
+                        width={60}
+                        height={150}
+                        data={autodata}
+                        margin={{
+                            top: 0,
+                            right: 20,
+                            left: 20,
+                            bottom: 0,
+                        }}
+                    >
+                        <Tooltip content={customTooltip} />
+                        <Bar dataKey="low" stackId="a" fill="#ff0000" />
+                        <Bar dataKey="avg" stackId="a" fill="#00ff00" />
+                        <Bar dataKey="high" stackId="a" fill="#0000ff" />
+                    </BarChart>
+                </div>
+                <div style={{ flex: "1" }}>
+                    <p>SPKR</p>
+                    <BarChart
+                        width={60}
+                        height={150}
+                        data={tspeaker}
+                        margin={{
+                            top: 0,
+                            right: 20,
+                            left: 20,
+                            bottom: 0,
+                        }}
+                    >
+                        <Tooltip content={customTooltip} />
+                        <Bar dataKey="low" stackId="a" fill="#ff0000" />
+                        <Bar dataKey="avg" stackId="a" fill="#00ff00" />
+                        <Bar dataKey="high" stackId="a" fill="#0000ff" />
+                    </BarChart>
+                </div>
+                <div style={{ flex: "1" }}>
+                    <p>AMP</p>
+                    <BarChart
+                        width={60}
+                        height={150}
+                        data={tamp}
+                        margin={{
+                            top: 0,
+                            right: 20,
+                            left: 20,
+                            bottom: 0,
+                        }}
+                    >
+                        <Tooltip content={customTooltip} />
+                        <Bar dataKey="low" stackId="a" fill="#ff0000" />
+                        <Bar dataKey="avg" stackId="a" fill="#00ff00" />
+                        <Bar dataKey="high" stackId="a" fill="#0000ff" />
+                    </BarChart>
+                </div>
+            </div>
+
+
         </div>
     )
 }

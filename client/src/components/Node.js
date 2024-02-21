@@ -65,7 +65,7 @@ function Node({ id, bank, selection, defaultteam }) {
             <div className="bg-gradient-to-b from-theme-fill to-theme-filldark text-white p-2 rounded-xl opacity-90 w-full h-full overflow-auto break-words">
                 {displaymode == "view" ? (
                     <Suspense fallback={<div>--Data Loading--</div>}>
-                        <p>{defaultteam} -- {team}</p>
+                        {/*<p>{defaultteam} -- {team}</p>*/}
                         {Data && <Data inputs={params.inputs} name={params.name} team={team} />}
                         <input className="text-black" value={team} onChange={(e) => {
                             setteam(e.target.value)
