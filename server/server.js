@@ -2,13 +2,55 @@ const express = require("express")
 const app = express()
 const fs = require("fs")
 const path = require("path")
-
+const admin = require("firebase-admin")
 const bodyParse = require("body-parser")
 
 
 let globalbank = "MatchBox" //FIGURE OUT A WAY TO CONFIG THIS
 let randvar = 100;
 let mode = "view"
+
+const acct = require("../key.json")
+let database
+
+
+
+/*admin.initializeApp({
+    credential: admin.credential.cert(acct),
+    databaseURL: "https://hot-scouting-default-rtdb.firebaseio.com" //2024 https://hot-scouting-default-rtdb.firebaseio.com ---old testing https://sheet-import-test-c264f-default-rtdb.firebaseio.com
+})
+console.log("admin " + JSON.stringify(admin.credential))
+database = admin.database()
+console.log("admin init")
+
+const datapath = "/" + "2024test" //2024 is 2024test old is 2023Worlds
+const datareference = database.ref(datapath)
+
+function grabfirebase() {
+    datareference.once("value", (snapshot) => {
+        const data = snapshot.val()
+        const newdata = {}
+        Object.entries(data).forEach(([key, val]) => {
+            const [match, team] = key.split("_");
+            if (!newdata[team]) {
+                newdata[team] = {}
+            }
+            newdata[team][match] = val
+            console.log(newdata[team][match] + " is " + val)
+        });
+        fs.writeFile("../banks/" + globalbank + "/data.json", JSON.stringify(newdata, null, 2), (err) => {
+            if (err) {
+                console.log(err)
+            } else {
+                console.log("Data successfully written to file.")
+            }
+        })
+    })
+}
+
+// Call the function to fetch data from Firebase when the server starts
+grabfirebase()*/
+
 
 const loader = require("../banks/" + globalbank + "/loader.js")
 
@@ -247,32 +289,7 @@ app.get("/loadcount", (req, res) => {
     })
 })
 
-function grabFirebase(path) {
 
-    const datapath = "/" + "2023Worlds" //should i implement a way to change this later
-    const datareference = database.ref(datapath)
-
-    datareference.once("value", (snapshot) => {
-        const data = snapshot.val()
-        //console.log("Data: " + JSON.stringify(data))
-
-        //turn into json format where there are no comments and its structured by teams and for each team it is an array of matches and each match is a list of pairs so like
-
-
-        const newdata = {}
-        Object.entries(data).forEach(([key, val]) => {
-            const [match, team] = key.split("_")
-            //console.log("match is " + match)
-            //console.log("team is " + team)
-            if (!newdata[team]) {
-                newdata[team] = {}
-            }
-            newdata[team][match] = val
-        })
-
-        fs.writeFile("./../banks/" + path + "/data.json", JSON.stringify(newdata, null, 2), (err) => { console.log(err) })
-    })
-}
 
 
 //grabFirebase("Matchbox") ONLY RUN THIS IF FOR SOME REASON YOU NEED TO UPDATE THE FIREBASE DATA

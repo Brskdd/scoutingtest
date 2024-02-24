@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "hot-scouting",
+  "private_key_id": "33719f3b0258b5047511695586f45e3b94b527e7",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCnYmG+OU8Qqiw/\nWelur6kF/fLoPn8bJduCJQm23DqhuAiq7nlkCbb9FikfD7YUJGllWutJnAwDKYGh\nts945PyjgRonphQG4ol15g1jaxvsauGSai3vhjbLhQ3rvbPREeql7QXdEblRIzDd\n3LqtE1UrBHUnLeJgyZPC24OTdPiPAEf4U8oSngdkI2WJLpj2bBxCuGWclVH0x/+k\nzrC4dam+9/9hvcigEmud/dGoTSf6q9u2ILv8lLApG/KiTE3mBa1Fvj+EhP9BRqh3\ndKMriKiVKQtnMPDlnJmynGev5XUPnbsIRLlgU/VMdkIrmWnsTpP17yM6tzFpJbRy\negkADUKHAgMBAAECggEAPP47kb5+UhtAfmE8D4pQ9A8CmaBUXscfwr/OV2TOtKlD\n901ozIxBst2FZH0sIxDVmwpTXIJRWkGgrBXaajo+2TGtHy+EcrHP1zdaP5UDGtYj\nll+8l2B3zReR6Ao7YP6/W3EQRuszdR52qxHIsFKwITnBmuI8cHpjroig3HWuMSUY\npWZFUxxyAepsJTVwI0FhikHe/EajD9X0B0BigLL+W5lqkbeYzs6bkFN9cwhwvQlF\nDDWtRvYGjwTTljWOqz3+XITs8onuyIIHgiwhOwJW+iFJkLS7nek+xgA4DW8qhXnP\ncH2GtOW1koepH06NeULuD24/BxpOFtuzwvIQE9UScQKBgQDh1w28sBtVmAiskn0U\nUnPPo7NODHJqYEOyT193nQHeyulqUSvrNsTPLzwnmDKCRmrukXGbpZXpVoCRAK6u\nyG60GjJYeDTptcElUZLuxX6bFEqmjl6HIdbLdm0K8uAC9XGUSxcbUzYVCYPj10m8\n7sDAtFjZNkr0733Dwwmm/2o9zwKBgQC9vNyrL+pamTD8pwy1OdwOBXQ+RU4qirKB\nhr2/liKkpSPb/FF53N58Rh35nqsLsrW6hOh7nLwwtmug+W5Q+GKGhuBTqsOFvp/6\ntvT0Ai2UEHJ4Ve4DYjEPjx0VmvkIWuUqZCaEzTChc5c+No52zcK+2j6mUmfqAYKx\nYLmpy1NVyQKBgQDFWh6BAwv/8kmyNJjlB2B41L69t5bMaq79xOrSJfwaawsqgyBz\n/Xpi6w4QM6n/ufV74NF8iGjGbXcQP55m0nQbIsFYGkNy8AeGyxAxY5hNgJ/ziHoG\ncIW5axXC+ZbUPxQv2KaqlD6wh44frmSbm7AJNhBmUFGUVSx7w5ZNvulidQKBgQCu\ngamjeOpecU7w0OOLOq/95V5Id42w6ufK4ZZbQ0aRj6Evjx2Qq2elfQfMsfY3SCKE\nbgE0z672TpEm+MJRjmFvwVVJHmG9/Nk+yk74rZgl+gqOStoiGols+f+SA3rQCGmF\nV59lvSLhG2MbQSo+cniO+ENuzZPtUX5WjdO1KuB2oQKBgBITBaeg5N4OdTe5Tr/W\nYWOJOnd7eO/CQrAhxlHCzmNXOnXs3CZ+pcp5TSwy5cD5F+0kZk/swpLWwcEoQMn+\nN7jbtjg7v+GNJ8YxMnfFCURWOtFltYcj6mgyTFa9fYuAZnVUWohA9Euo3sLqcniW\n3Is0uFWJBbPuz30aSyEoPXL/\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-4zqfv@hot-scouting.iam.gserviceaccount.com",
+  "client_id": "117854675394782450326",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-4zqfv%40hot-scouting.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
