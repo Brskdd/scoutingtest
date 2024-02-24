@@ -28,10 +28,24 @@ function NodeManager({ bank, reds, blues }) {
     }, [bank]);
     //get nodes for bank
     //for each id create a node with those params
-    return (
-        <div>
-            {nodebank && Object.entries(JSON.parse(nodebank)).map(([key, val]) => (
+    /*
+    old code to parse all the nodes
+    {nodebank && Object.entries(JSON.parse(nodebank)).map(([key, val]) => (
                 <Node key={key} id={key} bank={val} selection={bank} defaultteam={lineup[(key - 1)]}/>
+            ))}
+    */
+
+    function stupidconvert(num) {
+        if (num > 3) {
+            return (num * 2) % 6
+        } else {
+            return (num * 2) % 6 - 1
+        }
+    }
+    return (
+        <div className="w-full h-full grid grid-rows-3 gap-4 p-1 grid-flow-col">
+            {nodebank && Object.entries(JSON.parse(nodebank)).map(([key, val]) => (
+                <Node key={key} id={key} bank={val} selection={bank} defaultteam={lineup[(key - 1)]} />
             ))}
         </div>
     )

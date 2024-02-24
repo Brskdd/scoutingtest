@@ -29,7 +29,7 @@ function Node({ id, bank, selection, defaultteam }) {
         } else {
             setteam(defaultteam)
         }
-        
+
     }, [defaultteam])
 
     let offsetx = +params.posx1 * 20
@@ -46,13 +46,13 @@ function Node({ id, bank, selection, defaultteam }) {
     const divStyle = {
         margin: "0px",
         borderRadius: "15px",
-        position: "fixed",
+        //position: "fixed",
         padding: "3px",
         background: `linear-gradient(to bottom, #${params.color}, #${dark(params.color)})`,
-        top: offsety + "px",
-        left: offsetx + "px",
-        width: params.posx2 * 20 + "px",
-        height: params.posy2 * 20 + "px",
+        //top: offsety + "px",
+        //left: offsetx + "px",
+        //width: params.posx2 * 20 + "px",
+        //height: params.posy2 * 20 + "px",
         display: "grid",
         placeItems: "center",
         zIndex: 1
@@ -61,24 +61,26 @@ function Node({ id, bank, selection, defaultteam }) {
     };
 
     return (
-        <div style={divStyle} >
-            <div className="bg-gradient-to-b from-theme-fill to-theme-filldark text-white p-2 rounded-xl opacity-90 w-full h-full overflow-auto break-words">
-                {displaymode == "view" ? (
+        <div style={divStyle} className="flex flex-col relative">
+            <div className="bg-gradient-to-b from-theme-fill to-theme-filldark text-white p-2 rounded-xl opacity-90 w-full h-full overflow-auto flex-grow">
+                {displaymode === "view" ? (
                     <Suspense fallback={<div>--Data Loading--</div>}>
                         {/*<p>{defaultteam} -- {team}</p>*/}
                         {Data && <Data inputs={params.inputs} name={params.name} team={team} />}
-                        <input className="text-black" value={team} onChange={(e) => {
-                            setteam(e.target.value)
-                            console.log(e.target.value)
-                            }}></input>
                     </Suspense>
                 ) : (
                     <NodeConfig inputs={params.inputs} name={params.name} />
                 )}
-
             </div>
-            
-        </div> //rn its "view mode" obv not final version but figure out config modes
+            <input
+                className="absolute bottom-4 left-4 h-2 p-2" // added absolute positioning and bottom-0
+                value={team}
+                onChange={(e) => {
+                    setteam(e.target.value)
+                    console.log(e.target.value)
+                }}
+            />
+        </div>
     );
 }
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { PieChart, Pie, Cell, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar } from "recharts"
+import { PieChart, Pie, Cell, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar, ResponsiveContainer } from "recharts"
 import BowlingResult from "./BowlingResult";
 
 function RealStuff({ inputs, name, team }) {
@@ -59,10 +59,10 @@ function RealStuff({ inputs, name, team }) {
         fetch(`/getstat/["${team}","Auton Speaker"]`).then(response => response.json()).then(data => {
             const values = data.map(num => parseInt(num, 10))
             //console.log(values)
-            const low = Math.min(...values)
-            const high = Math.max(...values)
+            const low = isFinite(Math.min(...values)) ? Math.min(...values) : 0
+            const high = isFinite(Math.max(...values)) ? Math.max(...values) : 0
             const sum = values.reduce((acc, curr) => acc + curr, 0)
-            const average = sum / values.length
+            const average = values.length > 0 ? sum / values.length : 0
             setautodata([
                 {
                     name: 'AUTO',
@@ -75,10 +75,10 @@ function RealStuff({ inputs, name, team }) {
         fetch(`/getstat/["${team}","Teleop Speaker"]`).then(response => response.json()).then(data => {
             const values = data.map(num => parseInt(num, 10))
             //console.log(values)
-            const low = Math.min(...values)
-            const high = Math.max(...values)
+            const low = isFinite(Math.min(...values)) ? Math.min(...values) : 0
+            const high = isFinite(Math.max(...values)) ? Math.max(...values) : 0
             const sum = values.reduce((acc, curr) => acc + curr, 0)
-            const average = sum / values.length
+            const average = values.length > 0 ? sum / values.length : 0
             settspeaker([
                 {
                     name: 'SPKR',
@@ -91,10 +91,10 @@ function RealStuff({ inputs, name, team }) {
         fetch(`/getstat/["${team}","Teleop Amp"]`).then(response => response.json()).then(data => {
             const values = data.map(num => parseInt(num, 10))
             //console.log(values)
-            const low = Math.min(...values)
-            const high = Math.max(...values)
+            const low = isFinite(Math.min(...values)) ? Math.min(...values) : 0
+            const high = isFinite(Math.max(...values)) ? Math.max(...values) : 0
             const sum = values.reduce((acc, curr) => acc + curr, 0)
-            const average = sum / values.length
+            const average = values.length > 0 ? sum / values.length : 0
             settamp([
                 {
                     name: 'AMP',
@@ -153,36 +153,39 @@ function RealStuff({ inputs, name, team }) {
     }
 
     return (
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <div style={{ flex: "1" }}>
-                {/* Bowling Results component in the bottom left */}
+        <div style={{ position: "relative", width: "100%", height: "100%" }}>
+            {/* Bowling Results component in the top left */}
+            <div style={{ position: "absolute", top: 0, left: 0 }}>
                 Climb <BowlingResult list={climb} />
                 Trap <BowlingResult list={trap} />
             </div>
-            <div style={{ flex: "1" }}>
-                {/* PieChart component in the bottom right */}
-                <PieChart width={150} height={180}>
-                    <Pie
-                        data={startpos}
-                        dataKey="value"
-                        cx="50%"
-                        cy="50%"
-                        outerRadius={60}
-                        fill="#ff0000"
-                    >
-                        {startpos.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                        ))}
-                    </Pie>
-                    <Tooltip />
-                </PieChart>
+
+            {/* PieChart component in the center */}
+            <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
+                <ResponsiveContainer width={200} height={200}> {/* Set width and height as needed */}
+                    <PieChart>
+                        <Pie
+                            data={startpos}
+                            dataKey="value"
+                            cx="50%"
+                            cy="50%"
+                            outerRadius={60}
+                            fill="#ff0000"
+                        >
+                            {startpos.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                            ))}
+                        </Pie>
+                        <Tooltip />
+                    </PieChart>
+                </ResponsiveContainer>
             </div>
-            <div style={{ display: "flex"}}>
-                <div style={{ flex: "1" }}>
+
+            {/* BarCharts on the right */}
+            <div style={{ position: "absolute", top: "50%", right: 0, transform: "translateY(-50%)", display: "flex", flexDirection: "column" }}>
+                <div>
                     <p>AUTON</p>
                     <BarChart
-                        width={60}
-                        height={150}
                         data={autodata}
                         margin={{
                             top: 0,
@@ -197,11 +200,9 @@ function RealStuff({ inputs, name, team }) {
                         <Bar dataKey="high" stackId="a" fill="#0000ff" />
                     </BarChart>
                 </div>
-                <div style={{ flex: "1" }}>
+                <div>
                     <p>SPKR</p>
                     <BarChart
-                        width={60}
-                        height={150}
                         data={tspeaker}
                         margin={{
                             top: 0,
@@ -216,11 +217,9 @@ function RealStuff({ inputs, name, team }) {
                         <Bar dataKey="high" stackId="a" fill="#0000ff" />
                     </BarChart>
                 </div>
-                <div style={{ flex: "1" }}>
+                <div>
                     <p>AMP</p>
                     <BarChart
-                        width={60}
-                        height={150}
                         data={tamp}
                         margin={{
                             top: 0,
@@ -236,8 +235,6 @@ function RealStuff({ inputs, name, team }) {
                     </BarChart>
                 </div>
             </div>
-
-
         </div>
     )
 }
