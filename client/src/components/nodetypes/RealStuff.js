@@ -56,7 +56,7 @@ function RealStuff({ inputs, name, team }) {
 
     useEffect(() => {
         //console.log(`/getstat/["${team}","Auton High Cones"]`)
-        fetch(`/getstat/["${team}","Endgame Time To Balance"]`).then(response => response.json()).then(data => {
+        fetch(`/getstat/["${team}","Auton Speaker"]`).then(response => response.json()).then(data => {
             const values = data.map(num => parseInt(num, 10))
             //console.log(values)
             const low = Math.min(...values)
@@ -72,7 +72,7 @@ function RealStuff({ inputs, name, team }) {
                 }
             ])
         })
-        fetch(`/getstat/["${team}","Teleop High Cones"]`).then(response => response.json()).then(data => {
+        fetch(`/getstat/["${team}","Teleop Speaker"]`).then(response => response.json()).then(data => {
             const values = data.map(num => parseInt(num, 10))
             //console.log(values)
             const low = Math.min(...values)
@@ -88,7 +88,7 @@ function RealStuff({ inputs, name, team }) {
                 }
             ])
         })
-        fetch(`/getstat/["${team}","Teleop Low Cubes"]`).then(response => response.json()).then(data => {
+        fetch(`/getstat/["${team}","Teleop Amp"]`).then(response => response.json()).then(data => {
             const values = data.map(num => parseInt(num, 10))
             //console.log(values)
             const low = Math.min(...values)
@@ -104,7 +104,7 @@ function RealStuff({ inputs, name, team }) {
                 }
             ])
         })
-        fetch(`/getstat/["${team}","Endgame Charge Attempt"]`).then(response => response.json()).then(data => {
+        fetch(`/getstat/["${team}","Endgame Climb Attempt"]`).then(response => response.json()).then(data => {
             const values = data.map(item => (item === "true" ? true : false))
             const returning = values.map((bool, index) => ({
                 name: `m${index + 1}`,
@@ -113,7 +113,7 @@ function RealStuff({ inputs, name, team }) {
             //console.log(returning)
             setclimb(returning)
         })
-        fetch(`/getstat/["${team}","Endgame Defended Against"]`).then(response => response.json()).then(data => {
+        fetch(`/getstat/["${team}","Endgame Trap Note"]`).then(response => response.json()).then(data => {
             const values = data.map(item => (item === "true" ? true : false))
             const returning = values.map((bool, index) => ({
                 name: `m${index + 1}`,
@@ -122,7 +122,7 @@ function RealStuff({ inputs, name, team }) {
             //console.log(values)
             settrap(returning)
         })
-        fetch(`/getstat/["${team}","Autonomous Starting Position"]`).then(response => response.json()).then(data => {
+        fetch(`/getstat/["${team}","Auton Start Pose"]`).then(response => response.json()).then(data => {
             const values = data
             const counts = values.reduce((acc, item) => {
                 acc[item] = (acc[item] || 0) + 1

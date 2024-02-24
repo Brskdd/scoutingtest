@@ -15,7 +15,7 @@ let database
 
 
 
-/*admin.initializeApp({
+admin.initializeApp({
     credential: admin.credential.cert(acct),
     databaseURL: "https://hot-scouting-default-rtdb.firebaseio.com" //2024 https://hot-scouting-default-rtdb.firebaseio.com ---old testing https://sheet-import-test-c264f-default-rtdb.firebaseio.com
 })
@@ -49,7 +49,7 @@ function grabfirebase() {
 }
 
 // Call the function to fetch data from Firebase when the server starts
-grabfirebase()*/
+grabfirebase()
 
 
 const loader = require("../banks/" + globalbank + "/loader.js")

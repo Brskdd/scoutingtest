@@ -8,7 +8,7 @@ import NodeBar from "./components/NodeBar.js"
 import Logo from "./components/Logo.js"
 let timespolled = 0;
 function App() {
-  const [eventkey, seteventkey] = useState("2023gal")//UPDATE ME PER COMPETITION ESP CUZ RN ITS LAST YEARS
+  const [eventkey, seteventkey] = useState("2024week0")//UPDATE ME PER COMPETITION ESP CUZ RN ITS LAST YEARS 2023gal
   const [token, settoken] = useState("MIPsLEPwAhfTWlMwNaH4PoelxszYqwvkZxt5sv7MV46Hs5ASW7xAQFuUUi7612YK")//only reason to change this if i(aiden) got banned from tba api or smth
   const [match, setmatch] = useState("")
   const [schedule, setschedule] = useState({})
@@ -77,7 +77,7 @@ function App() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="h-1/6 w-full fixed top-0 left-0 bg-theme-primary z-0">
+      <div className="h-1/6 w-full fixed top-0 left-0 bg-theme-primary z-0 flex justify-between items-center">
         {/*top bar*/}
         <select onChange={(e) => setmatch(e.target.value)} className="m-4">
           <option value="">Select a match</option>
@@ -87,8 +87,8 @@ function App() {
             </option>
           ))}
         </select>
+        <img src={process.env.PUBLIC_URL + "/hotlogo.webp"} style={{ height: "100%" }} />
         <Logo />
-
       </div>
       <div className="fixed w-full h-5/6 bottom-0 bg-gradient-to-b from-theme-backdrop to-theme-backdropdark">
         <p> hello world</p>
