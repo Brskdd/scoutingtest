@@ -26,7 +26,7 @@ function App() {
   const [blineup, setblineup] = useState([])
 
   useEffect(() => {
-    fetch("https://www.thebluealliance.com/api/v3/team/frc67/event/" + eventkey + "/matches", {
+    fetch("https://www.thebluealliance.com/api/v3/event/" + eventkey + "/matches", {
       headers: {
         "X-TBA-Auth-Key": token // Replace with your API key
       }
