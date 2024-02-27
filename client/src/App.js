@@ -91,8 +91,11 @@ function App() {
         <Logo />
       </div>
       <div className="fixed w-full h-5/6 bottom-0 bg-gradient-to-b from-theme-backdrop to-theme-backdropdark">
-        <p> hello world</p>
-        <NodeManager bank={"MatchBox"} reds={rlineup} blues={blineup} />
+        <p>Made with &lt;3 by Aiden Zemblaku 2023-2024</p>
+        <div className="p-4 h-full w-full">
+          <NodeManager bank={"MatchBox"} reds={rlineup} blues={blineup} />
+        </div>
+
       </div>
     </div>
   )

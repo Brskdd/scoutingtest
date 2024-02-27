@@ -1,25 +1,25 @@
 {
   "0": {
     "1": {
-      "Auton Amp": "0",
+      "Auton Amp": "9999",
       "Auton Cross Line": "false",
-      "Auton Speaker": "10",
-      "Auton Speaker Misses": "0",
+      "Auton Speaker": "6",
+      "Auton Speaker Misses": "2",
       "Auton Start Pose": "Source",
       "Endgame Climb Attempt": "false",
       "Endgame Defended Against": "false",
       "Endgame Defense Time": "0",
       "Endgame End Pose": "Park",
       "Endgame Time To Climb": "0",
-      "Endgame Trap Note": "false",
+      "Endgame Trap Note": "true",
       "Match Number": "1",
       "Notes": "",
       "Start Predicted Winner": "Red",
       "Start Scouter Number": "0",
       "Team Number": "0",
-      "Teleop Amp": "10",
+      "Teleop Amp": "5",
       "Teleop Preferred Shooting Pose": "Speaker",
-      "Teleop Speaker": "10",
+      "Teleop Speaker": "12",
       "Teleop Speaker Misses": "0"
     },
     "2": {
