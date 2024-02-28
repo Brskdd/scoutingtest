@@ -23,7 +23,7 @@ console.log("admin " + JSON.stringify(admin.credential))
 database = admin.database()
 console.log("admin init")
 
-const datapath = "/" + "2024test" //2024 is 2024test old is 2023Worlds
+const datapath = "/" + "2024mimil" //2024 is 2024test old is 2023Worlds milford 2024mimil
 const datareference = database.ref(datapath)
 
 function grabfirebase() {
@@ -72,6 +72,12 @@ app.get("/getnodebank/:nodeval", (req, res) => {
         //console.log(data)
         res.send(data)
     })
+})
+
+app.get("/refreshfirebase", (req, res) => {
+    grabfirebase()
+    res.send(200)
+    console.log("firebase refreshed")
 })
 
 app.get("/getbank/:val", (req, res) => {

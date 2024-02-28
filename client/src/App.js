@@ -75,6 +75,10 @@ function App() {
 
   }, [match])
 
+  function refreshfirebasebutcool() {
+    fetch("/refreshfirebase")
+  }
+
   return (
     <div className="flex flex-col min-h-screen">
       <div className="h-1/6 w-full fixed top-0 left-0 bg-theme-primary z-0 flex justify-between items-center">
@@ -87,6 +91,7 @@ function App() {
             </option>
           ))}
         </select>
+        <button className="text-white" onClick={refreshfirebasebutcool}>Refresh Firebase</button>
         <img src={process.env.PUBLIC_URL + "/hotlogo.webp"} style={{ height: "100%" }} />
         <Logo />
       </div>
