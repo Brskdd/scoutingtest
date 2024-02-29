@@ -83,8 +83,8 @@ function RealStuff({ inputs, name, team }) {
                 {
                     name: 'SPKR',
                     low: low,
-                    avg: average,
-                    high: high,
+                    avg: average - low,
+                    high: high - average,
                 }
             ])
         })
@@ -99,8 +99,8 @@ function RealStuff({ inputs, name, team }) {
                 {
                     name: 'AMP',
                     low: low,
-                    avg: average,
-                    high: high,
+                    avg: average - low,
+                    high: high - average,
                 }
             ])
         })

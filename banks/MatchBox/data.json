@@ -18,6 +18,25 @@
       "Teleop Amp": "9",
       "Teleop Misses": "9",
       "Teleop Speaker": "99"
+    },
+    "11": {
+      "Auton Amp": "11",
+      "Auton Cross Line": "false",
+      "Auton Speaker": "11",
+      "Auton Speaker Misses": "3",
+      "Auton Start Pose": "Inside",
+      "Endgame Climb Attempt": "false",
+      "Endgame Defended Against": "true",
+      "Endgame Defense Time": "11",
+      "Endgame End Pose": "Hang",
+      "Endgame Time To Climb": "11",
+      "Endgame Trap Note": "true",
+      "Match Number": "11",
+      "Notes": "dummy 2",
+      "Team Number": "9999",
+      "Teleop Amp": "11",
+      "Teleop Misses": "1",
+      "Teleop Speaker": "11"
     }
   }
 }
