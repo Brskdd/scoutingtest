@@ -51,7 +51,12 @@ function NodeManager({ bank, reds, blues }) {
             ))}
         </div>)
     } else {
-        content = (<p className="text-white">MOBILE VIEW</p>)
+        {/*mobile view*/}
+        content = (<div className="w-full h-full grid grid-cols-1 gap-4 p-1 grid-flow-row" style={{overflow: "auto"}}>
+        {nodebank && Object.entries(JSON.parse(nodebank)).map(([key, val]) => (
+            <Node key={key} id={key} bank={val} selection={bank} defaultteam={lineup[(key - 1)]} />
+        ))}
+    </div>)
     }
     return content
 }

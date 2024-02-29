@@ -55,14 +55,15 @@ function Node({ id, bank, selection, defaultteam }) {
         //height: params.posy2 * 20 + "px",
         display: "grid",
         placeItems: "center",
-        zIndex: 1
+        zIndex: 1,
+        minHeight: "150px"
 
         // Add any other styles as needed
     };
 
     return (
         <div style={divStyle} className="flex flex-col relative">
-            <div className="bg-gradient-to-b from-theme-fill to-theme-filldark text-white p-2 rounded-xl opacity-90 w-full h-full overflow-auto flex-grow">
+            <div className="bg-gradient-to-b from-theme-fill to-theme-filldark text-white p-2 rounded-xl opacity-90 w-full h-full overflow-visible flex-grow">
                 {displaymode === "view" ? (
                     <Suspense fallback={<div>--Data Loading--</div>}>
                         {/*<p>{defaultteam} -- {team}</p>*/}

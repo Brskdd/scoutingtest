@@ -4,6 +4,24 @@ import BowlingResult from "./BowlingResult";
 
 function RealStuff({ inputs, name, team }) {
     const COLORS = ["#FF5733", "#C70039", "#900C3F"]
+    const [piesize, setpiesize] = useState(120)
+    const [barheight, setbarheight] = useState(120)
+    const [barwidth, setbarwidth] = useState(60)
+    const [barmargin, setbarmargin] = useState(20)
+
+    useEffect(() => {
+        if (window.innerHeight > window.innerWidth) {
+            setpiesize(80)
+            setbarheight(80)
+            setbarwidth(30)
+            setbarmargin(10)
+        } else {
+            setpiesize(120)
+            setbarheight(120)
+            setbarwidth(60)
+            setbarmargin(20)
+        }
+    }, [window.innerHeight, window.innerWidth])
 
     const [autodata, setautodata] = useState([
         {
@@ -163,15 +181,16 @@ function RealStuff({ inputs, name, team }) {
 
             {/* PieChart component in the center */}
             <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
-                <ResponsiveContainer width={120} height={120}> {/* Set width and height as needed */}
-                    <p>{startpos.map(item => `${item.name}${item.value}`).join(' ')}</p>
+            <p>{startpos.map(item => `${item.name}${item.value}`).join(' ')}</p>
+                <ResponsiveContainer width={piesize} height={piesize}> {/* Set width and height as needed */}
+                    
                     <PieChart>
                         <Pie
                             data={startpos}
                             dataKey="value"
                             cx="50%"
                             cy="50%"
-                            outerRadius={50}
+                            outerRadius={startpos/2 - 10}
                             fill="#ff0000"
                         >
                             {startpos.map((entry, index) => (
@@ -186,15 +205,15 @@ function RealStuff({ inputs, name, team }) {
             {/* BarCharts on the right */}
             <div style={{ display: "flex", position: "absolute", right: "0px" }}>
                 <div style={{ flex: "1" }}>
-                    <p style={{ width: "60px" }}>AUTON</p>
+                    <p style={{ width: barmargin + "px" }}>AU</p>
                     <BarChart
-                        width={60}
-                        height={120}
+                        width={barwidth}
+                        height={barheight}
                         data={autodata}
                         margin={{
                             top: 0,
-                            right: 20,
-                            left: 20,
+                            right: barmargin,
+                            left: barmargin,
                             bottom: 0,
                         }}
                     >
@@ -206,15 +225,15 @@ function RealStuff({ inputs, name, team }) {
                     </BarChart>
                 </div>
                 <div style={{ flex: "1" }}>
-                    <p style={{ width: "60px" }}>SPKR</p>
+                <p style={{ width: barmargin + "px" }}>SP</p>
                     <BarChart
-                        width={60}
-                        height={120}
-                        data={tspeaker}
+                        width={barwidth}
+                        height={barheight}
+                        data={autodata}
                         margin={{
                             top: 0,
-                            right: 20,
-                            left: 20,
+                            right: barmargin,
+                            left: barmargin,
                             bottom: 0,
                         }}
                     >
@@ -225,15 +244,15 @@ function RealStuff({ inputs, name, team }) {
                     </BarChart>
                 </div>
                 <div style={{ flex: "1" }}>
-                    <p style={{ width: "60px" }}>AMP</p>
+                    <p style={{ width: barmargin + "px" }}>AM</p>
                     <BarChart
-                        width={60}
-                        height={120}
-                        data={tamp}
+                        width={barwidth}
+                        height={barheight}
+                        data={autodata}
                         margin={{
                             top: 0,
-                            right: 20,
-                            left: 20,
+                            right: barmargin,
+                            left: barmargin,
                             bottom: 0,
                         }}
                     >
