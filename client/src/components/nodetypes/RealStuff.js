@@ -163,15 +163,15 @@ function RealStuff({ inputs, name, team }) {
 
             {/* PieChart component in the center */}
             <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
-                <ResponsiveContainer width={150} height={150}> {/* Set width and height as needed */}
-                <p>{startpos.map(item => `${item.name}${item.value}`).join(' ')}</p>
+                <ResponsiveContainer width={120} height={120}> {/* Set width and height as needed */}
+                    <p>{startpos.map(item => `${item.name}${item.value}`).join(' ')}</p>
                     <PieChart>
                         <Pie
                             data={startpos}
                             dataKey="value"
                             cx="50%"
                             cy="50%"
-                            outerRadius={60}
+                            outerRadius={50}
                             fill="#ff0000"
                         >
                             {startpos.map((entry, index) => (
@@ -189,7 +189,7 @@ function RealStuff({ inputs, name, team }) {
                     <p style={{ width: "60px" }}>AUTON</p>
                     <BarChart
                         width={60}
-                        height={150}
+                        height={120}
                         data={autodata}
                         margin={{
                             top: 0,
@@ -199,16 +199,17 @@ function RealStuff({ inputs, name, team }) {
                         }}
                     >
                         <Tooltip content={customTooltip} />
-                        <Bar dataKey="low" stackId="a" fill="#ff0000" />
-                        <Bar dataKey="avg" stackId="a" fill="#00ff00" />
-                        <Bar dataKey="high" stackId="a" fill="#0000ff" />
+
+                        <Bar dataKey="low" stackId="a" fill="#ff0000" label={{ position: "insideBottom", fill: "#ffffff" }} />
+                        <Bar dataKey="avg" stackId="a" fill="#00ff00" label={{ position: "insideBottom", fill: "#ffffff" }} />
+                        <Bar dataKey="high" stackId="a" fill="#0000ff" label={{ position: "insideBottom", fill: "#ffffff" }} />
                     </BarChart>
                 </div>
                 <div style={{ flex: "1" }}>
                     <p style={{ width: "60px" }}>SPKR</p>
                     <BarChart
                         width={60}
-                        height={150}
+                        height={120}
                         data={tspeaker}
                         margin={{
                             top: 0,
@@ -218,16 +219,16 @@ function RealStuff({ inputs, name, team }) {
                         }}
                     >
                         <Tooltip content={customTooltip} />
-                        <Bar dataKey="low" stackId="a" fill="#ff0000" />
-                        <Bar dataKey="avg" stackId="a" fill="#00ff00" />
-                        <Bar dataKey="high" stackId="a" fill="#0000ff" />
+                        <Bar dataKey="low" stackId="a" fill="#ff0000" label={{ position: "insideBottom", fill: "#ffffff" }} />
+                        <Bar dataKey="avg" stackId="a" fill="#00ff00" label={{ position: "insideBottom", fill: "#ffffff" }} />
+                        <Bar dataKey="high" stackId="a" fill="#0000ff" label={{ position: "insideBottom", fill: "#ffffff" }} />
                     </BarChart>
                 </div>
                 <div style={{ flex: "1" }}>
                     <p style={{ width: "60px" }}>AMP</p>
                     <BarChart
                         width={60}
-                        height={150}
+                        height={120}
                         data={tamp}
                         margin={{
                             top: 0,
@@ -237,9 +238,9 @@ function RealStuff({ inputs, name, team }) {
                         }}
                     >
                         <Tooltip content={customTooltip} />
-                        <Bar dataKey="low" stackId="a" fill="#ff0000" />
-                        <Bar dataKey="avg" stackId="a" fill="#00ff00" />
-                        <Bar dataKey="high" stackId="a" fill="#0000ff" />
+                        <Bar dataKey="low" stackId="a" fill="#ff0000" label={{ position: "insideBottom", fill: "#ffffff" }} />
+                        <Bar dataKey="avg" stackId="a" fill="#00ff00" label={{ position: "insideBottom", fill: "#ffffff" }} />
+                        <Bar dataKey="high" stackId="a" fill="#0000ff" label={{ position: "insideBottom", fill: "#ffffff" }} />
                     </BarChart>
                 </div>
             </div>
