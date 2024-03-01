@@ -8,7 +8,7 @@ import NodeBar from "./components/NodeBar.js"
 import Logo from "./components/Logo.js"
 let timespolled = 0;
 function App() {
-  const [eventkey, seteventkey] = useState("2024week0")//UPDATE ME PER COMPETITION ESP CUZ RN ITS LAST YEARS 2023gal
+  const [eventkey, seteventkey] = useState("2024mimil")//UPDATE ME PER COMPETITION ESP CUZ RN ITS LAST YEARS 2023gal
   const [token, settoken] = useState("MIPsLEPwAhfTWlMwNaH4PoelxszYqwvkZxt5sv7MV46Hs5ASW7xAQFuUUi7612YK")//only reason to change this if i(aiden) got banned from tba api or smth
   const [match, setmatch] = useState("")
   const [schedule, setschedule] = useState({})

@@ -74,9 +74,9 @@ function RealStuff({ inputs, name, team }) {
 
     useEffect(() => {
         //console.log(`/getstat/["${team}","Auton High Cones"]`)
-        fetch(`/getstat/["${team}","Auton Speaker"]`).then(response => response.json()).then(data => {
+        fetch(`/getstat/["${team}","Auton Speaker Made"]`).then(response => response.json()).then(data => {
             const values = data.map(num => parseInt(num, 10))
-            //console.log(values)
+            console.log("Auton Speaker stuff " + JSON.stringify(values))
             const low = isFinite(Math.min(...values)) ? Math.min(...values) : 0
             const high = isFinite(Math.max(...values)) ? Math.max(...values) : 0
             const sum = values.reduce((acc, curr) => acc + curr, 0)
@@ -90,7 +90,7 @@ function RealStuff({ inputs, name, team }) {
                 }
             ])
         })
-        fetch(`/getstat/["${team}","Teleop Speaker"]`).then(response => response.json()).then(data => {
+        fetch(`/getstat/["${team}","Teleop Speaker Made"]`).then(response => response.json()).then(data => {
             const values = data.map(num => parseInt(num, 10))
             //console.log(values)
             const low = isFinite(Math.min(...values)) ? Math.min(...values) : 0
@@ -106,7 +106,7 @@ function RealStuff({ inputs, name, team }) {
                 }
             ])
         })
-        fetch(`/getstat/["${team}","Teleop Amp"]`).then(response => response.json()).then(data => {
+        fetch(`/getstat/["${team}","Teleop Amps"]`).then(response => response.json()).then(data => {
             const values = data.map(num => parseInt(num, 10))
             //console.log(values)
             const low = isFinite(Math.min(...values)) ? Math.min(...values) : 0
@@ -150,10 +150,10 @@ function RealStuff({ inputs, name, team }) {
                 name,
                 value,
             }))
-            console.log("zzzzzzz" + JSON.stringify(returning))
+            //console.log("zzzzzzz" + JSON.stringify(returning))
             setstartpos(returning)
         })
-        console.log("qiqiqijoppqqpqpwpqp" + JSON.stringify(startpos))
+        //console.log("qiqiqijoppqqpqpwpqp" + JSON.stringify(startpos))
 
     }, [team])
 
@@ -182,9 +182,8 @@ function RealStuff({ inputs, name, team }) {
             {/* PieChart component in the center */}
             <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
             <p>{startpos.map(item => `${item.name}${item.value}`).join(' ')}</p>
-                <ResponsiveContainer width={piesize} height={piesize}> {/* Set width and height as needed */}
                     
-                    <PieChart>
+                    <PieChart width={piesize} height={piesize}>
                         <Pie
                             data={startpos}
                             dataKey="value"
@@ -199,7 +198,6 @@ function RealStuff({ inputs, name, team }) {
                         </Pie>
                         <Tooltip />
                     </PieChart>
-                </ResponsiveContainer>
             </div>
 
             {/* BarCharts on the right */}
@@ -229,7 +227,7 @@ function RealStuff({ inputs, name, team }) {
                     <BarChart
                         width={barwidth}
                         height={barheight}
-                        data={autodata}
+                        data={tspeaker}
                         margin={{
                             top: 0,
                             right: barmargin,
@@ -248,7 +246,7 @@ function RealStuff({ inputs, name, team }) {
                     <BarChart
                         width={barwidth}
                         height={barheight}
-                        data={autodata}
+                        data={tamp}
                         margin={{
                             top: 0,
                             right: barmargin,
