@@ -80,7 +80,7 @@ function RealStuff({ inputs, name, team }) {
             const low = isFinite(Math.min(...values)) ? Math.min(...values) : 0
             const high = isFinite(Math.max(...values)) ? Math.max(...values) : 0
             const sum = values.reduce((acc, curr) => acc + curr, 0)
-            const average = values.length > 0 ? sum / values.length : 0
+            const average = values.length > 0 ? Math.round((sum / values.length) * 10) / 10 : 0
             setautodata([
                 {
                     name: 'AUTO',
@@ -96,7 +96,7 @@ function RealStuff({ inputs, name, team }) {
             const low = isFinite(Math.min(...values)) ? Math.min(...values) : 0
             const high = isFinite(Math.max(...values)) ? Math.max(...values) : 0
             const sum = values.reduce((acc, curr) => acc + curr, 0)
-            const average = values.length > 0 ? sum / values.length : 0
+            const average = values.length > 0 ? Math.round((sum / values.length) * 10) / 10 : 0
             settspeaker([
                 {
                     name: 'SPKR',
@@ -112,7 +112,7 @@ function RealStuff({ inputs, name, team }) {
             const low = isFinite(Math.min(...values)) ? Math.min(...values) : 0
             const high = isFinite(Math.max(...values)) ? Math.max(...values) : 0
             const sum = values.reduce((acc, curr) => acc + curr, 0)
-            const average = values.length > 0 ? sum / values.length : 0
+            const average = values.length > 0 ? Math.round((sum / values.length) * 10) / 10 : 0
             settamp([
                 {
                     name: 'AMP',
