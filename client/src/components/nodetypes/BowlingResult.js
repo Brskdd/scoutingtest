@@ -12,7 +12,7 @@ function BowlingResult({ list }) {
                         color: item.val === 0 ? "red" : "green",
                     }}
                 >
-                    <strong>{item.val === 0 ? "🟥" : "🟩"}</strong>
+                    <strong>{item.val === 0 ? "|" : "|"}</strong>
                 </p>
             ))}
         </div>

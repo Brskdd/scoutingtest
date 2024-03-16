@@ -147,7 +147,7 @@ function RealStuff({ inputs, name, team }) {
                 return acc
             }, {})
             const returning = Object.entries(counts).map(([name, value]) => ({
-                name,
+                name: name[0],
                 value,
             }))
             //console.log("zzzzzzz" + JSON.stringify(returning))

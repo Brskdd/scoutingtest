@@ -44,7 +44,7 @@ function NodeManager({ bank, reds, blues }) {
     }
 
     let content
-    if (window.innerWidth > window.innerHeight) {
+    if (true) {
         content = (<div className="w-full h-full grid grid-rows-3 gap-4 p-1 grid-flow-col">
             {nodebank && Object.entries(JSON.parse(nodebank)).map(([key, val]) => (
                 <Node key={key} id={key} bank={val} selection={bank} defaultteam={lineup[(key - 1)]} />

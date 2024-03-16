@@ -23,7 +23,7 @@ console.log("admin " + JSON.stringify(admin.credential))
 database = admin.database()
 console.log("admin init")
 
-const datapath = "/" + "2024mimil" //2024 is 2024test old is 2023Worlds milford 2024mimil
+const datapath = "/" + "2024PreMiAnn" //2024 is 2024test old is 2023Worlds milford 2024mimil
 const datareference = database.ref(datapath)
 
 function grabfirebase() {
