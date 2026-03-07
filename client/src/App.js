@@ -43,7 +43,7 @@ function App() {
           //console.log(`Match ${match.match_number}: Scheduled Time - ${hours}:${minutes}, Teams - ${match.alliances.red.team_keys.join(', ')} vs ${match.alliances.blue.team_keys.join(', ')}`);
           //console.log(match.match_number)
           scheduler[match.key] = match.time
-          //console.log("piss" + JSON.stringify(match.alliances))
+          //console.log("aaaaa" + JSON.stringify(match.alliances))
           //setrlineup(match.alliances.red.team_keys)
           //setblineup(match.alliances.blue.team_keys)
           //console.log("red " + match.alliances.red.team_keys)
